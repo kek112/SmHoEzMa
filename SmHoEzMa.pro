@@ -25,9 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         intern/src/main.cpp \
-        intern/src/mainwindow.cpp
+        intern/src/mainwindow.cpp \
+    intern/src/pingmodel.cpp
 
 HEADERS += \
-        intern/src/mainwindow.h
+        intern/src/mainwindow.h \
+    intern/src/pingmodel.h
 
 include(Project_Compile_Settings_Sahm.pri)
