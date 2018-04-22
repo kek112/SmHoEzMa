@@ -11,7 +11,8 @@ PingModel::PingModel(QObject *parent) :
 //    ping->setProcessChannelMode(QProcess::MergedChannels);
 }
 
-PingModel::~PingModel(){
+PingModel::~PingModel()
+{
 }
 
 void PingModel::verifyStatus()
@@ -20,7 +21,8 @@ void PingModel::verifyStatus()
     {
         qDebug() << "read on ...";
         connect(ping, SIGNAL(readyRead()), this, SLOT(readResult()));
-        if(ping->canReadLine()){
+        if(ping->canReadLine())
+        {
             qDebug() << "LINE read on ...";
         }
     }
@@ -43,7 +45,7 @@ void PingModel::start_command()
     {
         QString command = "ping";
         QStringList args;
-        args << "-w" <<  "3" <<  "www.google.com";
+        args << "-w" <<  "3" <<  "255.255.255.255";
         ping->start(command, args);
         ping->waitForStarted(7000);
         running = true;
