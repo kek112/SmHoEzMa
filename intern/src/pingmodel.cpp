@@ -1,18 +1,39 @@
-#include <QString>
-#include <QDebug>
 #include "pingmodel.h"
 
+
+
 PingModel::PingModel(QObject *parent) :
-    QObject(parent), running(false)
+    QObject(parent),running(false)
 {
     ping = new QProcess(this);
     connect(ping, SIGNAL(started()), this, SLOT(verifyStatus()));
     connect(ping, SIGNAL(finished(int)), this, SLOT(readResult()));
-//    ping->setProcessChannelMode(QProcess::MergedChannels);
 }
 
 PingModel::~PingModel()
 {
+}
+
+QString PingModel::CheckForIP()
+{
+    QString Temp;
+
+    QString network = "192.168.178.";
+
+            for(int i=0;i<255;i++)
+            {
+                QString command = "ping";
+                QStringList args;
+                args << "-w" <<  "1" <<  network+QString::number(i);
+                ping->start(command, args);
+                ping->waitForStarted(7000);
+                running = true;
+                ping->waitForFinished(5000);
+
+//                Temp += currIp;
+
+            }
+    return Temp;
 }
 
 void PingModel::verifyStatus()
@@ -21,13 +42,10 @@ void PingModel::verifyStatus()
     {
         qDebug() << "read on ...";
         connect(ping, SIGNAL(readyRead()), this, SLOT(readResult()));
-        if(ping->canReadLine())
-        {
+        if(ping->canReadLine()){
             qDebug() << "LINE read on ...";
         }
-    }
-    else
-    {
+    }else{
         qDebug() << "not able to read ...";
     }
 }
@@ -38,21 +56,6 @@ void PingModel::readResult()
     running = false;
     qDebug() << "LENDO: " << ping->readLine();
 }
-
-void PingModel::start_command()
-{
-    if(ping)
-    {
-        QString command = "ping";
-        QStringList args;
-        args << "-w" <<  "3" <<  "255.255.255.255";
-        ping->start(command, args);
-        ping->waitForStarted(7000);
-        running = true;
-        ping->waitForFinished(5000);
-    }
-}
-
 bool PingModel::is_running()
 {
     return running;

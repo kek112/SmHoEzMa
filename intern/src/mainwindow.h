@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDebug>
+#include <QApplication>
+#include <QtCore/QCoreApplication>
+#include <QLabel>
 
 class MainWindow : public QMainWindow
 {

@@ -1,8 +1,11 @@
 #ifndef PINGMODEL_H
 #define PINGMODEL_H
 
+#include <QString>
+#include <QDebug>
 #include <QObject>
 #include <QProcess>
+#include <QtNetwork>
 
 class PingModel : public QObject
 {
@@ -10,20 +13,14 @@ class PingModel : public QObject
 public:
     explicit PingModel(QObject *parent = 0);
     ~PingModel();
-
-    void start_command();
-    bool is_running();
-    bool finished();
-
+    QString CheckForIP();
 signals:
 
 public slots:
-    void verifyStatus();
-    void readResult();
+
 
 private:
-    QProcess *ping;
-    bool running;
+    QProcess* ping;
 };
 
 #endif // PINGMODEL_H

@@ -1,23 +1,19 @@
 #include "mainwindow.h"
 #include "pingmodel.h"
-#include <QDebug>
-#include <QApplication>
-#include <QtCore/QCoreApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    w.show();
-
     PingModel model;
-    model.start_command();
+    QLabel *label = new QLabel(&w);
 
-    while(model.is_running())
-    {
-        qDebug()<<"Waiting";
-    }
 
-    qDebug()<<"Terminated";
+
+    label->setText(model.CheckForIP());
+
+
+    //Display Content
+    w.show();
     return a.exec();
 }
