@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network
+QT       += core gui network positioning
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,10 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         intern/src/main.cpp \
         intern/src/mainwindow.cpp \
-    intern/src/pingmodel.cpp
+    intern/src/pingmodel.cpp \
+    intern/src/androidsensor.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
-    intern/src/pingmodel.h
+    intern/src/pingmodel.h \
+    intern/src/androidsensor.h
 
 include(Project_Compile_Settings_Sahm.pri)

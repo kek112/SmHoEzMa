@@ -13,14 +13,20 @@ class PingModel : public QObject
 public:
     explicit PingModel(QObject *parent = 0);
     ~PingModel();
+
     QString CheckForIP();
+    bool is_running();
+    bool finished();
+
 signals:
 
 public slots:
-
+    void verifyStatus();
+    void readResult();
 
 private:
-    QProcess* ping;
+    QProcess *ping;
+    bool running;
 };
 
 #endif // PINGMODEL_H

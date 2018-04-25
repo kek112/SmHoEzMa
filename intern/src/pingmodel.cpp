@@ -2,13 +2,16 @@
 
 
 
+
 PingModel::PingModel(QObject *parent) :
-    QObject(parent),running(false)
+    QObject(parent), running(false)
 {
     ping = new QProcess(this);
     connect(ping, SIGNAL(started()), this, SLOT(verifyStatus()));
     connect(ping, SIGNAL(finished(int)), this, SLOT(readResult()));
+//    ping->setProcessChannelMode(QProcess::MergedChannels);
 }
+
 
 PingModel::~PingModel()
 {
@@ -16,10 +19,12 @@ PingModel::~PingModel()
 
 QString PingModel::CheckForIP()
 {
-    QString Temp;
+    QString Temp    = "";
 
     QString network = "192.168.178.";
 
+    if(ping)
+    {
             for(int i=0;i<255;i++)
             {
                 QString command = "ping";
@@ -30,9 +35,10 @@ QString PingModel::CheckForIP()
                 running = true;
                 ping->waitForFinished(5000);
 
-//                Temp += currIp;
+                Temp += ping->readLine();
 
             }
+    }
     return Temp;
 }
 

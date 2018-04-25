@@ -1,16 +1,19 @@
 #include "mainwindow.h"
 #include "pingmodel.h"
+#include "androidsensor.h"
+
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    PingModel model;
+    //PingModel model;
     QLabel *label = new QLabel(&w);
+    AndroidSensor butz;
 
 
 
-    label->setText(model.CheckForIP());
+    //label->setText("IP"+model.CheckForIP());
 
 
     //Display Content
