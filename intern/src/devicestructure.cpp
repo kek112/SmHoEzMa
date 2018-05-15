@@ -6,6 +6,7 @@
 ///
 /// \brief CDeviceStructure::CDeviceStructure
 ///
+//todo: do somtimes
 CDeviceStructure::CDeviceStructure()
 {
     load();

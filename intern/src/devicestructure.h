@@ -3,6 +3,8 @@
 
 #include <QString>
 #include <QHostAddress>
+
+
 class CDeviceStructure
 {
     Q_OBJECT
@@ -11,13 +13,22 @@ public:
     void save();
     void load();
     void deleteDevice();
-    QList<Devices> returnDevices();
     void addDevices();
 
 
-private:
-    QList<Device> m_Devices ;
+    QList<Devices> returnDevices();
+    QList<Devices> retrievElements(QDomElement root, QString tag);
 
+
+private:
+    QList<Device> m_Devices;
+
+    QString m_FileName              = "devicelist.xml";
+
+    QString m_XmlNameString         = "Name";
+    QString m_XmlIpAdressString     = "IpAddress";
+    QString m_XmlMacAddressString   = "MacAddress";
+    QString m_XmlDeviceTypeString   = "DeviceType";
 
 
 private:
