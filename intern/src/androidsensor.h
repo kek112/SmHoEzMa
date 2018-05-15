@@ -4,11 +4,11 @@
 #include <QDebug>
 #include <QNmeaPositionInfoSource>
 
-class AndroidSensor : QObject
+class CAndroidSensor : QObject
 {
     Q_OBJECT
 public:
-    AndroidSensor(QObject *parent = 0)
+    CAndroidSensor(QObject *parent = 0)
         : QObject(parent)
     {
 //        qDebug()<<QGeoPositionInfoSource::availableSources();

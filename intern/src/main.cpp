@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     //PingModel model;
     QLabel *label = new QLabel(&w);
-    AndroidSensor butz;
+    CAndroidSensor butz;
 
 
 

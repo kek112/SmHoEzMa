@@ -3,7 +3,7 @@
 
 
 
-PingModel::PingModel(QObject *parent) :
+CPingModel::CPingModel(QObject *parent) :
     QObject(parent), running(false)
 {
     ping = new QProcess(this);
@@ -13,11 +13,11 @@ PingModel::PingModel(QObject *parent) :
 }
 
 
-PingModel::~PingModel()
+CPingModel::~CPingModel()
 {
 }
 
-QString PingModel::CheckForIP()
+QString CPingModel::CheckForIP()
 {
     QString Temp    = "";
 
@@ -42,7 +42,7 @@ QString PingModel::CheckForIP()
     return Temp;
 }
 
-void PingModel::verifyStatus()
+void CPingModel::verifyStatus()
 {
     if(ping->isReadable())
     {
@@ -56,18 +56,18 @@ void PingModel::verifyStatus()
     }
 }
 
-void PingModel::readResult()
+void CPingModel::readResult()
 {
     qDebug() << "Acabou!!!";
     running = false;
     qDebug() << "LENDO: " << ping->readLine();
 }
-bool PingModel::is_running()
+bool CPingModel::is_running()
 {
     return running;
 }
 
-bool PingModel::finished()
+bool CPingModel::finished()
 {
     return ping->atEnd();
 }

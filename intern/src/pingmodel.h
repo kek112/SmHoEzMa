@@ -7,12 +7,12 @@
 #include <QProcess>
 #include <QtNetwork>
 
-class PingModel : public QObject
+class CPingModel : public QObject
 {
     Q_OBJECT
 public:
-    explicit PingModel(QObject *parent = 0);
-    ~PingModel();
+    explicit CPingModel(QObject *parent = 0);
+    ~CPingModel();
 
     QString CheckForIP();
     bool is_running();

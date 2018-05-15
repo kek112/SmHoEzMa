@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network positioning
+QT       += core gui network positioning xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,11 +27,13 @@ SOURCES += \
         intern/src/main.cpp \
         intern/src/mainwindow.cpp \
     intern/src/pingmodel.cpp \
-    intern/src/androidsensor.cpp
+    intern/src/androidsensor.cpp \
+    intern/src/devicestructure.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
     intern/src/pingmodel.h \
-    intern/src/androidsensor.h
+    intern/src/androidsensor.h \
+    intern/src/devicestructure.h
 
 include(Project_Compile_Settings_Sahm.pri)
