@@ -34,7 +34,7 @@ bool CDeviceStructure::save()
 bool CDeviceStructure::load()
 {
     QDomDocument document;
-    QFile file = QStandardPaths::StandardLocation(QStandardPaths::AppConfigLocation)[0] + m_FileName;
+    QFile file (QStandardPaths::standardLocations(QStandardPaths::AppConfigLocation)[0] + m_FileName);
 
     // Open a file for reading
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -109,16 +109,18 @@ bool CDeviceStructure::addDevices(  QString       _Name,
 /// \brief CDeviceStructure::deleteDevice
 /// delete one specific device with the name
 /// \return
-/// will return true if name exists in lsist othgerwise false :)
+/// will return true if name exists in lsist otherwise false :)
 ///
 bool CDeviceStructure::deleteDevice(QString _Name)
 {
+    int cunter=0;
     foreach (Device tempdevice, m_Devices)
     {
+        cunter++;
         if(tempdevice.m_Name == _Name)
         {
-            m_Devices.removeAt(m_Devices.indexOf(tempdevice));
-            return true
+            m_Devices.removeAt(cunter);
+            return true;
         }
     }
     return false;
@@ -152,7 +154,7 @@ QList<CDeviceStructure::Device> CDeviceStructure::retrievElements(QDomElement ro
             device.m_Name           = e.attribute(m_XmlNameString);
             device.m_IpAddress      = e.attribute(m_XmlIpAdressString);
             device.m_MacAddress     = e.attribute(m_XmlMacAddressString);
-            device.m_DeviceType     = e.attribute(m_XmlDeviceTypeString);
+            device.m_DeviceType     = static_cast<EDevices>(e.attribute(m_XmlDeviceTypeString).toInt());
 
             devicelist.append(device);
         }

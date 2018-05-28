@@ -3,8 +3,31 @@
 # Project created by QtCreator 2018-04-17T15:05:29
 #
 #-------------------------------------------------
-
+#
+#
+#       HIER EINFÜGEN
+#
 QT       += core gui network positioning xml
+#
+#       HIER EINFÜGEN
+#
+#
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,12 +51,14 @@ SOURCES += \
         intern/src/mainwindow.cpp \
     intern/src/pingmodel.cpp \
     intern/src/androidsensor.cpp \
-    intern/src/devicestructure.cpp
+    intern/src/devicestructure.cpp \
+    intern/src/phillips.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
     intern/src/pingmodel.h \
     intern/src/androidsensor.h \
-    intern/src/devicestructure.h
+    intern/src/devicestructure.h \
+    intern/src/phillips.h
 
 include(Project_Compile_Settings_Sahm.pri)

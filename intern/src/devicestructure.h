@@ -3,21 +3,42 @@
 
 #include <QString>
 #include <QHostAddress>
-
+#include <QtXML>
 
 class CDeviceStructure
 {
-    Q_OBJECT
+
+private:
+
+    enum EDevices
+    {
+        SENSOR,
+        LAMP,
+        RADIATOR
+    };
+
+public:
+    struct Device
+    {
+      QString       m_Name;
+      QHostAddress  m_IpAddress;
+      QString       m_MacAddress;
+      EDevices      m_DeviceType;
+    };
+
 public:
     CDeviceStructure();
-    void save();
-    void load();
-    void deleteDevice();
-    void addDevices();
+    bool save();
+    bool load();
+    bool deleteDevice(QString _Name);
+    bool addDevices(QString       _Name,
+                    QHostAddress  _IpAddress,
+                    QString       _MacAddress,
+                    EDevices      _DeviceType);
 
 
-    QList<Devices> returnDevices();
-    QList<Devices> retrievElements(QDomElement root, QString tag);
+    QList<Device> returnDevices();
+    QList<Device> retrievElements(QDomElement root, QString tag);
 
 
 private:
@@ -31,21 +52,8 @@ private:
     QString m_XmlDeviceTypeString   = "DeviceType";
 
 
-private:
-    struct Device
-    {
-      QString       m_Name;
-      QHostAddress  m_IpAddress;
-      QString       m_MacAddress;
-      EDevices      m_DeviceType;
-    };
 
-    enum EDevices
-    {
-        SENSOR,
-        LAMP,
-        RADIATOR
-    };
+
 };
 
 #endif // DEVICESTRUCTURE_H

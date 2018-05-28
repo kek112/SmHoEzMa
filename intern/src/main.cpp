@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "pingmodel.h"
 #include "androidsensor.h"
-
+#include "phillips.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,12 +9,13 @@ int main(int argc, char *argv[])
     MainWindow w;
     //PingModel model;
     QLabel *label = new QLabel(&w);
-    CAndroidSensor butz;
+    CPhillips *butz = new CPhillips(&w,true,240,240,false,1,"192.168.178.64");
 
 
 
     //label->setText("IP"+model.CheckForIP());
 
+    //butz->switchOff();
 
     //Display Content
     w.show();
