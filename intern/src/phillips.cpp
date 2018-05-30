@@ -36,6 +36,7 @@ CPhillips::CPhillips(QObject *parent,
     m_lampNumber=   _lampnumber;
     m_ip=           _ip;
 
+    updateAPICall();
 
     QJsonObject configurationObject;
     configurationObject.insert("on",        m_switchedOn);
@@ -69,15 +70,25 @@ void CPhillips::callBridge(QJsonDocument _body)
 {
     QNetworkAccessManager manager;
 
-    QNetworkRequest request(QUrl(m_APICall));
+    qDebug() << _body.toJson();
+    qDebug() << m_APICall;
+    QUrl temp = QUrl(m_APICall);
+    QNetworkRequest request(temp);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QString("application/json"));
 
-    QNetworkReply* reply = manager.put(request, _body.toJson());
+    QNetworkReply* reply = manager.put(request, _body.toJson()); //als sstring senden
+     qDebug() <<reply->error();
     /*
     QNetworkAccessManager *manager = new QNetworkAccessManager::PutOperation(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(replyFinished(QNetworkReply*)));
 
     manager->get(QNetworkRequest(QUrl(m_APICall);*/
+}
+
+void CPhillips::updateAPICall()
+{
+    m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
 }
 
 void CPhillips::reply(QNetworkReply *_networkReply)

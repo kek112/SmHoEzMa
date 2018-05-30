@@ -21,7 +21,7 @@ public:
     void    switchOn();
     void    switchOff();
     void    callBridge(QJsonDocument _body);
-
+    void    updateAPICall();
 private:
 
 
@@ -32,10 +32,10 @@ private:
     int     m_lampNumber;
 
     QString  m_ip       = "192.168.178.64";
-    QString  m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights"+QString::number(m_lampNumber)+"/state";
+    QString  m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
 
 private slots:
-    void replyFinished(QNetworkReply* _networkReply);
+    void reply(QNetworkReply* _networkReply);
 };
 
 #endif // PHILLIPS_H
