@@ -34,8 +34,6 @@ private:
     QString  m_ip       = "192.168.178.64";
     QString  m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
 
-private slots:
-    void reply(QNetworkReply* _networkReply);
 };
 
 #endif // PHILLIPS_H

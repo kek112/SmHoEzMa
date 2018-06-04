@@ -58,7 +58,9 @@ CPhillips::~CPhillips()
 
 void CPhillips::switchOn()
 {
-
+    QJsonObject onObject;
+    onObject.insert("on","true");
+    callBridge(QJsonDocument(onObject));
 }
 void CPhillips::switchOff()
 {
@@ -66,6 +68,14 @@ void CPhillips::switchOff()
     onObject.insert("on","false");
     callBridge(QJsonDocument(onObject));
 }
+///
+/// \brief CPhillips::callBridge
+/// connects to the hue bridge and send commands to the individual lamps
+/// create a QJsonDocument which will be accepted by the hue bridge
+/// for examples see https://developers.meethue.com/documentation/getting-started
+/// thank you for your attention
+/// \param _body
+///
 void CPhillips::callBridge(QJsonDocument _body)
 {
     qDebug() << _body.toJson();
@@ -74,15 +84,9 @@ void CPhillips::callBridge(QJsonDocument _body)
     QNetworkRequest request(temp);
     request.setHeader(QNetworkRequest::ContentTypeHeader, QString("application/json"));
 
-    QNetworkReply* reply = manager.put(request, _body.toJson()); //als sstring senden
-    //QNetworkReply* reply = manager.put(request, R"({"on":false})");
+    QNetworkReply* reply = manager.put(request, _body.toJson());
+    QString temp2 = reply->readAll();
     qDebug() <<reply->error();
-    /*
-    QNetworkAccessManager *manager = new QNetworkAccessManager::PutOperation(this);
-    connect(manager, SIGNAL(finished(QNetworkReply*)),
-            this, SLOT(replyFinished(QNetworkReply*)));
-
-    manager->get(QNetworkRequest(QUrl(m_APICall);*/
 }
 
 void CPhillips::updateAPICall()
@@ -90,7 +94,3 @@ void CPhillips::updateAPICall()
     m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
 }
 
-void CPhillips::reply(QNetworkReply *_networkReply)
-{
-
-}
