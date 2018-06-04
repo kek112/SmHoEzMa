@@ -1,6 +1,7 @@
 #include "phillipscolor.h"
+#include "phillips.h"
 
-CPhillipsColor::CPhillipsColor() : public CPhillips
+CPhillipsColor::CPhillipsColor()
 {
 
 }

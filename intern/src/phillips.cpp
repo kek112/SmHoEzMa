@@ -68,8 +68,6 @@ void CPhillips::switchOff()
 }
 void CPhillips::callBridge(QJsonDocument _body)
 {
-    QNetworkAccessManager manager;
-
     qDebug() << _body.toJson();
     qDebug() << m_APICall;
     QUrl temp = QUrl(m_APICall);
@@ -77,7 +75,8 @@ void CPhillips::callBridge(QJsonDocument _body)
     request.setHeader(QNetworkRequest::ContentTypeHeader, QString("application/json"));
 
     QNetworkReply* reply = manager.put(request, _body.toJson()); //als sstring senden
-     qDebug() <<reply->error();
+    //QNetworkReply* reply = manager.put(request, R"({"on":false})");
+    qDebug() <<reply->error();
     /*
     QNetworkAccessManager *manager = new QNetworkAccessManager::PutOperation(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)),

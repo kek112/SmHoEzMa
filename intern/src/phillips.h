@@ -23,7 +23,7 @@ public:
     void    callBridge(QJsonDocument _body);
     void    updateAPICall();
 private:
-
+    QNetworkAccessManager manager;
 
     bool    m_switchedOn;
     int     m_brightness;

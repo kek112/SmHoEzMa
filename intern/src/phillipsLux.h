@@ -1,8 +1,8 @@
 #ifndef PHILLIPSLUX_H
 #define PHILLIPSLUX_H
+#include "phillips.h"
 
-
-class CPhillipsLux
+class CPhillipsLux:public CPhillips
 {
 public:
     CPhillipsLux();
