@@ -1,10 +1,14 @@
 #include "humiditysensor.h"
 
-
+#include <QNetworkAccessManager>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 CHumiditySensor::CHumiditySensor(int _sensorNumber, QString _ip)
 {
-
+    m_sensorNumber      = _sensorNumber;
+    m_ip                = _ip;
+    updateAPICall();
 }
 
 int CHumiditySensor::getHumidity()
@@ -12,26 +16,25 @@ int CHumiditySensor::getHumidity()
     QUrl temp = QUrl(m_APICall);
     QNetworkRequest request(temp);
 
-    reply = manager.put(request, _body.toJson());
+    reply = manager.get(request);
 
     connect(reply , SIGNAL(readyRead()) , this , SLOT(waitForReply()));
 
-    return m_replyMessage;
+     qDebug() << m_replyMessage;
+    ///
+    /// convert the JSOn into usable value
+    ///
+    return -1;
 }
 
-void CHumiditySensor::updateAPICall()
-{
-
-}
-
-void CPhillips::waitForReply()
+void CHumiditySensor::waitForReply()
 {
     m_replyMessage = reply->readAll();
 }
 
-void CPhillips::updateAPICall()
+void CHumiditySensor::updateAPICall()
 {
-    m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
+    m_APICall  = QString("http://")+m_ip+":45455/api/Humidity/"+QString::number(m_sensorNumber);
 }
 
 

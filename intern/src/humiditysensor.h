@@ -4,8 +4,9 @@
 #include <QObject>
 #include <QNetworkReply>
 
-class CHumiditySensor
+class CHumiditySensor : public QObject
 {
+    Q_OBJECT
 public:
     CHumiditySensor(int    _sensorNumber,
                     QString _ip);
@@ -21,10 +22,13 @@ private:
 
 
     QString  m_ip       = "192.168.178.64";
-    QString  m_APICall  = QString("http://")+m_ip+":8080/api/Humidity/"+QString::number(m_lampNumber);
+    QString  m_APICall  = QString("http://")+m_ip+":45455/api/Humidity/"+QString::number(m_sensorNumber);
 
 private:
     void        updateAPICall();
+
+private slots:
+    void    waitForReply();
 
 };
 

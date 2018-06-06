@@ -12,7 +12,12 @@ CPhillipsLux::CPhillipsLux(QObject *parent,
                            int _brightness,
                            int _saturation,
                            int _lampnumber,
-                           QString _ip):CPhillips(*parent,_swtichedOn,_brightness,_saturation,_lampnumber,_ip)
+                           QString _ip):CPhillips(parent,
+                                                  _swtichedOn,
+                                                  _brightness,
+                                                  _saturation,
+                                                  _lampnumber,
+                                                  _ip)
 {
 
 }
