@@ -6,15 +6,19 @@
 ///
 /// \brief CDeviceStructure::CDeviceStructure
 ///
-//todo: do somtimes
+
+///todo program funtkion
 CDeviceStructure::CDeviceStructure()
 {
     load();
 }
 
 
+///todo program funtkion
+
 ///
 /// \brief CDeviceStructure::save
+///
 /// \return
 ///
 bool CDeviceStructure::save()
@@ -84,7 +88,8 @@ QList<CDeviceStructure::Device> CDeviceStructure::returnDevices()
 bool CDeviceStructure::addDevices(  QString       _Name,
                                     QHostAddress  _IpAddress,
                                     QString       _MacAddress,
-                                    EDevices      _DeviceType)
+                                    EDevices      _DeviceType,
+                                    int           _DeviceNumber)
 {
     Device device;
 
@@ -96,10 +101,11 @@ bool CDeviceStructure::addDevices(  QString       _Name,
         }
     }
 
-    device.m_Name       = _Name;
-    device.m_IpAddress  = _IpAddress;
-    device.m_MacAddress = _MacAddress;
-    device.m_DeviceType = _DeviceType;
+    device.m_Name           = _Name;
+    device.m_IpAddress      = _IpAddress;
+    device.m_MacAddress     = _MacAddress;
+    device.m_DeviceType     = _DeviceType;
+    device.m_DeviceNumber   =_DeviceNumber;
 
     m_Devices.append(device);
     return true;

@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     //PingModel model;
     QLabel *label = new QLabel(&w);
-    CPhillips *butz = new CPhillips(&w,true,240,240,false,1,"192.168.178.64");
+    CPhillips *butz = new CPhillips(&w,true,240,240,1,"192.168.178.64");
 
 
 

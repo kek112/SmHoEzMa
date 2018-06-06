@@ -54,7 +54,8 @@ SOURCES += \
     intern/src/devicestructure.cpp \
     intern/src/phillips.cpp \
     intern/src/phillipscolor.cpp \
-    intern/src/phillipsLux.cpp
+    intern/src/phillipsLux.cpp \
+    intern/src/humiditysensor.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
@@ -63,6 +64,7 @@ HEADERS += \
     intern/src/devicestructure.h \
     intern/src/phillips.h \
     intern/src/phillipscolor.h \
-    intern/src/phillipsLux.h
+    intern/src/phillipsLux.h \
+    intern/src/humiditysensor.h
 
 include(Project_Compile_Settings_Sahm.pri)

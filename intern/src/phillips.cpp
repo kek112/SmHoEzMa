@@ -25,14 +25,12 @@ CPhillips::CPhillips(QObject *parent,
                      bool   _swtichedOn,
                      int    _brightness,
                      int    _saturation,
-                     bool   _colorloop,
                      int    _lampnumber,
                      QString _ip) : QObject(parent)
 {
     m_switchedOn=   _swtichedOn;
     m_brightness=   _brightness;
     m_saturation=   _saturation;
-    m_colorloop =   _colorloop;
     m_lampNumber=   _lampnumber;
     m_ip=           _ip;
 
@@ -42,8 +40,6 @@ CPhillips::CPhillips(QObject *parent,
     configurationObject.insert("on",        m_switchedOn);
     configurationObject.insert("bri",       m_brightness);
     configurationObject.insert("sat",       m_saturation);
-    configurationObject.insert("sat",       m_saturation);
-    configurationObject.insert("effect",    m_colorloop ? "colorloop" : "none");
     configurationObject.insert("lampnumber",m_lampNumber);
 
     QJsonDocument body(configurationObject);
@@ -54,6 +50,30 @@ CPhillips::CPhillips(QObject *parent,
 CPhillips::~CPhillips()
 {
 
+}
+
+///
+/// \brief CPhillips::setBrightness
+/// Value has to be between 0 and 254 otherwise useless
+/// maybe implement with slider in app
+///  \param _brightness
+///
+void CPhillips::setBrightness(int _brightness)
+{
+    QJsonObject onObject;
+    onObject.insert("bri",_brightness);
+    callBridge(QJsonDocument(onObject));
+}
+///
+/// \brief CPhillips::setSaturation
+/// same as brightness
+///  \param _saturation
+///
+void CPhillips::setSaturation(int _saturation)
+{
+    QJsonObject onObject;
+    onObject.insert("sat",_saturation);
+    callBridge(QJsonDocument(onObject));
 }
 
 void CPhillips::switchOn()
@@ -68,6 +88,7 @@ void CPhillips::switchOff()
     onObject.insert("on","false");
     callBridge(QJsonDocument(onObject));
 }
+
 ///
 /// \brief CPhillips::callBridge
 /// connects to the hue bridge and send commands to the individual lamps
@@ -76,7 +97,7 @@ void CPhillips::switchOff()
 /// thank you for your attention
 /// \param _body
 ///
-void CPhillips::callBridge(QJsonDocument _body)
+QString CPhillips::callBridge(QJsonDocument _body)
 {
     qDebug() << _body.toJson();
     qDebug() << m_APICall;
@@ -84,13 +105,19 @@ void CPhillips::callBridge(QJsonDocument _body)
     QNetworkRequest request(temp);
     request.setHeader(QNetworkRequest::ContentTypeHeader, QString("application/json"));
 
-    QNetworkReply* reply = manager.put(request, _body.toJson());
-    QString temp2 = reply->readAll();
-    qDebug() <<reply->error();
+   reply = manager.put(request, _body.toJson());
+
+    connect(reply , SIGNAL(readyRead()) , this , SLOT(waitForReply()));
+
+    return m_replyMessage;
+}
+
+void CPhillips::waitForReply()
+{
+    m_replyMessage= reply->readAll();
 }
 
 void CPhillips::updateAPICall()
 {
     m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
 }
-
