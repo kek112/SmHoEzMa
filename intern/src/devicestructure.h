@@ -10,11 +10,16 @@ class CDeviceStructure
 
 private:
 
+    ///
+    /// \brief The EDevices enum
+    /// create for every device own class with individual functions
+    ///
     enum EDevices
     {
-        SENSOR,
-        LAMP,
-        RADIATOR
+        PHILIPLSCLOLORLAMP,
+        PHILIPLSLUXLAMP,
+        TEMPERATURESENSOR,
+        HUMIDITYSENSOR
     };
 
 public:
@@ -24,6 +29,7 @@ public:
       QHostAddress  m_IpAddress;
       QString       m_MacAddress;
       EDevices      m_DeviceType;
+      int           m_DeviceNumber;
     };
 
 public:
@@ -34,7 +40,8 @@ public:
     bool addDevices(QString       _Name,
                     QHostAddress  _IpAddress,
                     QString       _MacAddress,
-                    EDevices      _DeviceType);
+                    EDevices      _DeviceType,
+                    int           _DeviceNumber);
 
 
     QList<Device> returnDevices();

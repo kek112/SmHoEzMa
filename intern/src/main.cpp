@@ -2,15 +2,15 @@
 #include "pingmodel.h"
 #include "androidsensor.h"
 #include "phillips.h"
-
+#include "humiditysensor.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
     //PingModel model;
     QLabel *label = new QLabel(&w);
-    CPhillips *butz = new CPhillips(&w,true,240,240,false,1,"192.168.178.64");
-
+    CHumiditySensor *butz = new  CHumiditySensor(1,"192.168.178.64");
+    butz->getHumidity();
 
 
     //label->setText("IP"+model.CheckForIP());

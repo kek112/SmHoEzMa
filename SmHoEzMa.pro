@@ -54,14 +54,9 @@ SOURCES += \
     intern/src/androidsensor.cpp \
     intern/src/devicestructure.cpp \
     intern/src/phillips.cpp \
-    intern/src/mainview.cpp \
-    intern/src/appheader.cpp \
-    intern/src/devicelistview.cpp \
-    intern/src/devicesettingsview.cpp \
-    intern/src/aboutview.cpp \
-    intern/src/adddeviceview.cpp \
-    intern/src/menubar.cpp \
-    intern/src/closemenueventfilter.cpp
+    intern/src/phillipscolor.cpp \
+    intern/src/phillipsLux.cpp \
+    intern/src/humiditysensor.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
@@ -69,18 +64,9 @@ HEADERS += \
     intern/src/androidsensor.h \
     intern/src/devicestructure.h \
     intern/src/phillips.h \
-    intern/src/mainview.h \
-    intern/src/appheader.h \
-    intern/src/devicelistview.h \
-    intern/src/devicesettingsview.h \
-    intern/src/aboutview.h \
-    intern/src/adddeviceview.h \
-    intern/src/menubar.h \
-    intern/src/closemenueventfilter.h
-
-INCLUDEPATH += \
-    extern/qt-material-widgets/components
-
+    intern/src/phillipscolor.h \
+    intern/src/phillipsLux.h \
+    intern/src/humiditysensor.h
 
 include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)
