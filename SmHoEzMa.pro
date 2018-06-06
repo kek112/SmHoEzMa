@@ -67,3 +67,8 @@ include(Project_Compile_Settings_Sahm.pri)
 
 DISTFILES += \
     map.qml
+
+RESOURCES += \
+    qml.qrc \
+    intern/assets/marker.qrc \
+    marker.qrc

@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     QQuickWidget *view = new QQuickWidget;
-    view->setSource(QUrl::fromLocalFile("../../../../map.qml"));
+    view->setSource(QUrl::fromLocalFile(":/map"));
     w.setCentralWidget(view);
     //PingModel model;
     //QLabel *label = new QLabel(&w);
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     w.show();
 
     //QQmlApplicationEngine engine;
-    //engine.load(QUrl(QStringLiteral("../../../../map.qml")));
+    //engine.load(QUrl(QStringLiteral(":\map")));
 
     return a.exec();
 }

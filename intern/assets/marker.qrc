@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="marker">mm_20_red.png</file>
+    </qresource>
+</RCC>
