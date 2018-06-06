@@ -1,7 +1,7 @@
 #include "devicestructure.h"
 
 #include <QStandardPaths>
-#include <QtXML>
+#include <QtXml>
 
 ///
 /// \brief CDeviceStructure::CDeviceStructure

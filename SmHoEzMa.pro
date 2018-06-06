@@ -7,7 +7,7 @@
 #
 #       HIER EINFÜGEN
 #
-QT       += core gui network positioning xml
+QT       += core gui network positioning xml qml quickwidgets
 #
 #       HIER EINFÜGEN
 #
@@ -52,13 +52,18 @@ SOURCES += \
     intern/src/pingmodel.cpp \
     intern/src/androidsensor.cpp \
     intern/src/devicestructure.cpp \
-    intern/src/phillips.cpp
+    intern/src/phillips.cpp \
+    intern/src/homecoming.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
     intern/src/pingmodel.h \
     intern/src/androidsensor.h \
     intern/src/devicestructure.h \
-    intern/src/phillips.h
+    intern/src/phillips.h \
+    intern/src/homecoming.h
 
 include(Project_Compile_Settings_Sahm.pri)
+
+DISTFILES += \
+    map.qml
