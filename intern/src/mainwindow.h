@@ -1,11 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QDebug>
+#include "mainview.h"
+
 #include <QApplication>
-#include <QtCore/QCoreApplication>
-#include <QLabel>
+#include <QMainWindow>
 
 class MainWindow : public QMainWindow
 {
@@ -14,6 +13,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+private:
+    CMainView* m_pMainView;
 };
 
 #endif // MAINWINDOW_H

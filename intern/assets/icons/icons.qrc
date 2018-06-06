@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="add">baseline-add-24px.svg</file>
+        <file alias="back">baseline-arrow_back-24px.svg</file>
+        <file alias="menu">baseline-menu-24px.svg</file>
+        <file alias="remove">baseline-remove-24px.svg</file>
+        <file alias="menuImage">icon-smart-home-light-blue-1.png</file>
+    </qresource>
+</RCC>

@@ -45,6 +45,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+CONFIG += qtc_runnable
 
 SOURCES += \
         intern/src/main.cpp \
@@ -52,13 +53,37 @@ SOURCES += \
     intern/src/pingmodel.cpp \
     intern/src/androidsensor.cpp \
     intern/src/devicestructure.cpp \
-    intern/src/phillips.cpp
+    intern/src/phillips.cpp \
+    intern/src/mainview.cpp \
+    intern/src/appheader.cpp \
+    intern/src/devicelistview.cpp \
+    intern/src/devicesettingsview.cpp \
+    intern/src/aboutview.cpp \
+    intern/src/adddeviceview.cpp \
+    intern/src/menubar.cpp \
+    intern/src/closemenueventfilter.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
     intern/src/pingmodel.h \
     intern/src/androidsensor.h \
     intern/src/devicestructure.h \
-    intern/src/phillips.h
+    intern/src/phillips.h \
+    intern/src/mainview.h \
+    intern/src/appheader.h \
+    intern/src/devicelistview.h \
+    intern/src/devicesettingsview.h \
+    intern/src/aboutview.h \
+    intern/src/adddeviceview.h \
+    intern/src/menubar.h \
+    intern/src/closemenueventfilter.h
+
+INCLUDEPATH += \
+    extern/qt-material-widgets/components
+
 
 include(Project_Compile_Settings_Sahm.pri)
+#include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)
+
+RESOURCES += \
+    intern/assets/icons/icons.qrc
