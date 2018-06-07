@@ -1,4 +1,5 @@
 #include "mainview.h"
+#include "closemenueventfilter.h"
 
 CMainView::CMainView(QWidget *parent) : QWidget(parent)
 {
@@ -26,7 +27,17 @@ CMainView::CMainView(QWidget *parent) : QWidget(parent)
 
     setLayout(m_pMainLayout);
 
+    CCloseMenuEventFilter* pEventFilter = new CCloseMenuEventFilter();
+
+    qApp->installEventFilter(pEventFilter);
+
+
+    connect(pEventFilter, SIGNAL(closeMenu()), this, SLOT(closeMenu()));
+    connect(this, SIGNAL(sendIsMenuVisible(bool)), pEventFilter, SLOT(setIsMenuVisible(bool)));
     connect(m_pAppHeader, SIGNAL(MenuButtonPressed()), this, SLOT(triggerMenu()));
+
+
+
 }
 
 void CMainView::resizeEvent(QResizeEvent *_event)
@@ -43,18 +54,6 @@ void CMainView::resizeEvent(QResizeEvent *_event)
     QWidget::resizeEvent(_event);
 }
 
-void CMainView::mouseReleaseEvent(QMouseEvent *_event)
-{
-    if(_event->pos().x() > qApp->activeWindow()->size().width() * 0.7 && m_pMenuBar->isVisible())
-    {
-        m_pMenuBar->hide();
-    }
-    else
-    {
-        QWidget::mouseReleaseEvent(_event);
-    }
-}
-
 void CMainView::triggerMenu()
 {
     QSize tempSize = qApp->activeWindow()->size();
@@ -62,5 +61,21 @@ void CMainView::triggerMenu()
     m_pMenuBar->resize(tempSize);
     m_pMenuBar->raise();
 
+    openMenu();
+
+}
+
+void CMainView::closeMenu(bool _sendSignal)
+{
+    m_pMenuBar->hide();
+    if(_sendSignal)
+    {
+        emit sendIsMenuVisible(false);
+    }
+}
+
+void CMainView::openMenu()
+{
     m_pMenuBar->show();
+    emit sendIsMenuVisible(true);
 }
