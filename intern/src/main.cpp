@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     //PingModel model;
-    QLabel *label = new QLabel(&w);
+    //QLabel *label = new QLabel(&w);
     CHumiditySensor *butz = new  CHumiditySensor(1,"192.168.178.64");
     butz->getHumidity();
 
