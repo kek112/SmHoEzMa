@@ -20,13 +20,15 @@ public:
     explicit CMainView(QWidget *parent = nullptr);
 
 signals:
+    void sendIsMenuVisible(bool _visible);
 
 protected:
     void resizeEvent(QResizeEvent* _event);
-    void mouseReleaseEvent(QMouseEvent* _event);
 
 private slots:
     void triggerMenu();
+    void closeMenu(bool _sendSignal = false);
+    void openMenu();
 
 private:
     CAppHeader*         m_pAppHeader;

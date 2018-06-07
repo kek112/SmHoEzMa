@@ -13,6 +13,9 @@ class CCloseMenuEventFilter : public QObject
 public:
     explicit CCloseMenuEventFilter(QObject *parent = nullptr);
 
+public slots:
+    void setIsMenuVisible(bool _visible);
+
 signals:
     void closeMenu();
 protected:
@@ -20,6 +23,7 @@ protected:
 
 private:
     bool isMenuVisible;
+    bool pressedDown;
 };
 
 #endif // CLOSEMENUEVENTFILTER_H

@@ -53,8 +53,14 @@ SOURCES += \
     intern/src/pingmodel.cpp \
     intern/src/androidsensor.cpp \
     intern/src/devicestructure.cpp \
+<<<<<<< HEAD
     intern/src/Philipscolor.cpp \
     intern/src/PhilipsLux.cpp \
+=======
+    intern/src/phillips.cpp \
+    intern/src/phillipscolor.cpp \
+    intern/src/phillipsLux.cpp \
+>>>>>>> fixed pro file, started working on popup menu
     intern/src/humiditysensor.cpp \
     intern/src/aboutview.cpp \
     intern/src/adddeviceview.cpp \
@@ -63,19 +69,29 @@ SOURCES += \
     intern/src/devicelistview.cpp \
     intern/src/devicesettingsview.cpp \
     intern/src/mainview.cpp \
+<<<<<<< HEAD
     intern/src/menubar.cpp \
     intern/tests/tst_Philips.cpp \
     intern/src/philips.cpp \
     intern/src/philips.cpp \
     intern/src/tempereratursensor.cpp
+=======
+    intern/src/menubar.cpp
+>>>>>>> fixed pro file, started working on popup menu
 
 HEADERS += \
         intern/src/mainwindow.h \
     intern/src/pingmodel.h \
     intern/src/androidsensor.h \
     intern/src/devicestructure.h \
+<<<<<<< HEAD
     intern/src/Philipscolor.h \
     intern/src/PhilipsLux.h \
+=======
+    intern/src/phillips.h \
+    intern/src/phillipscolor.h \
+    intern/src/phillipsLux.h \
+>>>>>>> fixed pro file, started working on popup menu
     intern/src/humiditysensor.h \
     intern/src/aboutview.h \
     intern/src/adddeviceview.h \
@@ -84,11 +100,15 @@ HEADERS += \
     intern/src/devicelistview.h \
     intern/src/devicesettingsview.h \
     intern/src/mainview.h \
+<<<<<<< HEAD
     intern/src/menubar.h \
     intern/tests/tst_Philips.h \
     intern/src/philips.h \
     intern/src/philips.h \
     intern/src/tempereratursensor.h
+=======
+    intern/src/menubar.h
+>>>>>>> fixed pro file, started working on popup menu
 
 include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)
