@@ -52,23 +52,21 @@ SOURCES += \
     intern/src/pingmodel.cpp \
     intern/src/androidsensor.cpp \
     intern/src/devicestructure.cpp \
-    intern/src/phillips.cpp \
-    intern/src/homecoming.cpp
+    intern/src/phillips.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
     intern/src/pingmodel.h \
     intern/src/androidsensor.h \
     intern/src/devicestructure.h \
-    intern/src/phillips.h \
-    intern/src/homecoming.h
+    intern/src/phillips.h
 
 include(Project_Compile_Settings_Sahm.pri)
 
 DISTFILES += \
-    map.qml
+    map.qml \
+    intern/qml/map.qml
 
 RESOURCES += \
-    qml.qrc \
-    intern/assets/marker.qrc \
-    marker.qrc
+    images.qrc \
+    qml.qrc

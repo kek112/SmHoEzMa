@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file alias="marker">mm_20_red.png</file>
+        <file>intern/assets/marker.png</file>
     </qresource>
 </RCC>

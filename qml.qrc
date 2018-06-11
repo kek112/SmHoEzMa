@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file alias="map">map.qml</file>
+        <file>intern/qml/map.qml</file>
     </qresource>
 </RCC>

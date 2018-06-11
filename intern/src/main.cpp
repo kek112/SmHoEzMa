@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     QQuickWidget *view = new QQuickWidget;
-    view->setSource(QUrl::fromLocalFile(":/map"));
+    view->setSource(QUrl::fromLocalFile(":/intern/qml/map.qml"));
     w.setCentralWidget(view);
     //PingModel model;
     //QLabel *label = new QLabel(&w);
@@ -21,12 +21,8 @@ int main(int argc, char *argv[])
     //label->setText("IP"+model.CheckForIP());
     //butz->switchOff();
     //Display Content
-
-
     w.show();
 
-    //QQmlApplicationEngine engine;
-    //engine.load(QUrl(QStringLiteral(":\map")));
 
     return a.exec();
 }
