@@ -4,6 +4,15 @@
 #include <QtXML>
 
 ///
+/// This class represents the structure of devices how they will be handled in the app and will be saved
+/// as XML
+/// die ENUM Edevices is used to call the class for each device
+/// this class will also save/load all devices
+///
+/// it also adds/deletes devices to the list which can can be used to manage all saved devices
+///
+
+///
 /// \brief CDeviceStructure::CDeviceStructure
 ///
 
@@ -11,6 +20,7 @@
 CDeviceStructure::CDeviceStructure()
 {
     load();
+    save();
 }
 
 
@@ -18,11 +28,40 @@ CDeviceStructure::CDeviceStructure()
 
 ///
 /// \brief CDeviceStructure::save
+/// safe the device lsit into xml file with the scheme
+///
+///
+/// <Devices>
+/// <Name=””, IpAddress=””, MacAddress=””,DeviceType=””, DeviceNumber="">
+/// <Name=””, IpAddress=””, MacAddress=””,DeviceType=””, DeviceNumber="">
+/// <Name=””, IpAddress=””, MacAddress=””,DeviceType=””, DeviceNumber="">
+/// </Devices>
+///
+///
 ///
 /// \return
 ///
 bool CDeviceStructure::save()
 {
+    QFile file(m_FileName);
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return false;
+
+
+    QDomDocument doc;
+    QDomElement xmldevice = doc.createElement( "Devices" );
+
+    foreach (Device tempdevice, m_Devices)
+    {
+        xmldevice.setAttribute(m_XmlNameString,         tempdevice.m_Name);
+        xmldevice.setAttribute(m_XmlIpAdressString,     tempdevice.m_IpAddress.toString());
+        xmldevice.setAttribute(m_XmlMacAddressString,   tempdevice.m_MacAddress);
+        xmldevice.setAttribute(m_XmlDeviceNumber,       tempdevice.m_DeviceNumber);
+        xmldevice.setAttribute(m_XmlDeviceTypeString,   tempdevice.m_DeviceType);
+
+        doc.appendChild(xmldevice);
+    }
 
     return false;
 }
@@ -61,7 +100,7 @@ bool CDeviceStructure::load()
     QDomElement root = document.firstChildElement();
 
     // retrievelements(QDomElement root, QString tag, QString att)
-    m_Devices = retrievElements(root, "Devices");
+    m_Devices = retrieveElements(root, "Devices");
 
 }
 
@@ -105,7 +144,7 @@ bool CDeviceStructure::addDevices(  QString       _Name,
     device.m_IpAddress      = _IpAddress;
     device.m_MacAddress     = _MacAddress;
     device.m_DeviceType     = _DeviceType;
-    device.m_DeviceNumber   =_DeviceNumber;
+    device.m_DeviceNumber   = _DeviceNumber;
 
     m_Devices.append(device);
     return true;
@@ -139,9 +178,15 @@ bool CDeviceStructure::deleteDevice(QString _Name)
 /// needs root element from where to start
 /// \param tag
 /// specify which node is important
+/// /// <Devices>
+/// <Name=””, IpAddress=””, MacAddress=””,DeviceType=””, DeviceNumber="">
+/// <Name=””, IpAddress=””, MacAddress=””,DeviceType=””, DeviceNumber="">
+/// <Name=””, IpAddress=””, MacAddress=””,DeviceType=””, DeviceNumber="">
+/// </Devices>
+/// this is the needed scheme so the function can work properly
 /// \return
 /// returns list created from the nodes
-QList<CDeviceStructure::Device> CDeviceStructure::retrievElements(QDomElement root, QString tag)
+QList<CDeviceStructure::Device> CDeviceStructure::retrieveElements(QDomElement root, QString tag)
 {
 
     QList<Device> devicelist;
@@ -161,6 +206,7 @@ QList<CDeviceStructure::Device> CDeviceStructure::retrievElements(QDomElement ro
             device.m_IpAddress      = e.attribute(m_XmlIpAdressString);
             device.m_MacAddress     = e.attribute(m_XmlMacAddressString);
             device.m_DeviceType     = static_cast<EDevices>(e.attribute(m_XmlDeviceTypeString).toInt());
+            device.m_DeviceNumber   = e.attribute(m_XmlDeviceNumber).toInt();
 
             devicelist.append(device);
         }

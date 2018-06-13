@@ -5,6 +5,15 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
+///
+/// \brief CPhillips::CPhillips
+/// \param parent
+/// this class is used for the Philipps Hue Emulator
+/// the URL is in the Header which will be editable in the future, right now the ip and port is hard coded
+/// this baseclass implements only functionalities which can be found in the LUX and HUE lamps
+/// it will wait until the API responds, will maybe changed into an asynchronous thread right now it waits
+///
+
 CPhillips::CPhillips(QObject *parent) : QObject(parent)
 {
 

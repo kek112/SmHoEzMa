@@ -1,5 +1,10 @@
 #include "androidsensor.h"
-
+///
+/// \brief CAndroidSensor::CAndroidSensor
+/// \param parent
+/// this class is used to call the different sensors of the android phone
+/// only used for GPS at the moment
+///
 CAndroidSensor::CAndroidSensor(QObject *parent)
     : QObject(parent)
 {

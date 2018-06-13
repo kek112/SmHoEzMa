@@ -45,7 +45,7 @@ public:
 
 
     QList<Device> returnDevices();
-    QList<Device> retrievElements(QDomElement root, QString tag);
+    QList<Device> retrieveElements(QDomElement root, QString tag);
 
 
 private:
@@ -57,6 +57,7 @@ private:
     QString m_XmlIpAdressString     = "IpAddress";
     QString m_XmlMacAddressString   = "MacAddress";
     QString m_XmlDeviceTypeString   = "DeviceType";
+    QString m_XmlDeviceNumber       = "DeviceNumber";
 
 
 

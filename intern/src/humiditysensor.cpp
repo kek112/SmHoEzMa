@@ -4,6 +4,12 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
+///
+/// \brief CHumiditySensor::CHumiditySensor
+/// \param _sensorNumber
+/// \param _ip
+/// this will be used to create a call to the handmade REST API for the humidity values
+
 CHumiditySensor::CHumiditySensor(int _sensorNumber, QString _ip)
 {
     m_sensorNumber      = _sensorNumber;
