@@ -13,3 +13,7 @@ The Bridge itself is amenable by an REST-API. The exact Documentation is readabl
 
 Also i had to develop an interface by myself because other manufactures dont distribute emulators. 
 With the Hue emulator as example i created an own REST-API which delivers different values for temperature and humidity. 
+
+1. Starten des Java Hue Emulators v0.8
+2. Starten der Rest API mittels IIS Express über VS oder Daten direkt in IIS Verzeichnis kopieren und damit starten
+3. App starten, Geräte ansteuen
