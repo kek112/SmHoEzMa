@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "pingmodel.h"
 #include "androidsensor.h"
-#include "phillips.h"
+#include "philips.h"
 #include "humiditysensor.h"
 #include "devicestructure.h"
 int main(int argc, char *argv[])

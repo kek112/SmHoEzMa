@@ -1,12 +1,12 @@
-#ifndef PHILLIPSCOLOR_H
-#define PHILLIPSCOLOR_H
-#include "phillips.h"
+#ifndef PhilipsCOLOR_H
+#define PhilipsCOLOR_H
+#include "Philips.h"
 
-class CPhillipsColor : public CPhillips
+class CPhilipsColor : public CPhilips
 {
 public:
-    CPhillipsColor(QObject *parent = 0);
-    CPhillipsColor(QObject *parent,
+    CPhilipsColor(QObject *parent = 0);
+    CPhilipsColor(QObject *parent,
                    bool     _swtichedOn,
                    int      _brightness,
                    int      _saturation,
@@ -22,4 +22,4 @@ private:
     int            m_hueValue;
 };
 
-#endif // PHILLIPSCOLOR_H
+#endif // PhilipsCOLOR_H

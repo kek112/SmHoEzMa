@@ -7,7 +7,7 @@
 #
 #       HIER EINFÜGEN
 #
-QT       += core gui network positioning xml
+QT       += core gui network positioning xml testlib
 #
 #       HIER EINFÜGEN
 #
@@ -32,7 +32,7 @@ QT       += core gui network positioning xml
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SmHoEzMa
-TEMPLATE = app
+TEMPLATE = app subdirs
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -45,7 +45,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += qtc_runnable
+CONFIG += qtc_runnable testcase
 
 SOURCES += \
         intern/src/main.cpp \
@@ -53,9 +53,8 @@ SOURCES += \
     intern/src/pingmodel.cpp \
     intern/src/androidsensor.cpp \
     intern/src/devicestructure.cpp \
-    intern/src/phillips.cpp \
-    intern/src/phillipscolor.cpp \
-    intern/src/phillipsLux.cpp \
+    intern/src/Philipscolor.cpp \
+    intern/src/PhilipsLux.cpp \
     intern/src/humiditysensor.cpp \
     intern/src/aboutview.cpp \
     intern/src/adddeviceview.cpp \
@@ -64,16 +63,18 @@ SOURCES += \
     intern/src/devicelistview.cpp \
     intern/src/devicesettingsview.cpp \
     intern/src/mainview.cpp \
-    intern/src/menubar.cpp
+    intern/src/menubar.cpp \
+    intern/tests/tst_Philips.cpp \
+    intern/src/philips.cpp \
+    intern/src/philips.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
     intern/src/pingmodel.h \
     intern/src/androidsensor.h \
     intern/src/devicestructure.h \
-    intern/src/phillips.h \
-    intern/src/phillipscolor.h \
-    intern/src/phillipsLux.h \
+    intern/src/Philipscolor.h \
+    intern/src/PhilipsLux.h \
     intern/src/humiditysensor.h \
     intern/src/aboutview.h \
     intern/src/adddeviceview.h \
@@ -82,7 +83,10 @@ HEADERS += \
     intern/src/devicelistview.h \
     intern/src/devicesettingsview.h \
     intern/src/mainview.h \
-    intern/src/menubar.h
+    intern/src/menubar.h \
+    intern/tests/tst_Philips.h \
+    intern/src/philips.h \
+    intern/src/philips.h
 
 include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)

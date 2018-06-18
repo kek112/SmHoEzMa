@@ -62,8 +62,9 @@ bool CDeviceStructure::save()
 
         doc.appendChild(xmldevice);
     }
-
-    return false;
+    QTextStream out(&file);
+    out<<xmldevice;
+    return true;
 }
 
 ///

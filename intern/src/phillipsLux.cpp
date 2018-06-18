@@ -1,18 +1,18 @@
-#include "phillipsLux.h"
+#include "PhilipsLux.h"
 
 
 
-CPhillipsLux::CPhillipsLux(QObject *parent)
+CPhilipsLux::CPhilipsLux(QObject *parent)
 {
 
 }
 
-CPhillipsLux::CPhillipsLux(QObject *parent,
+CPhilipsLux::CPhilipsLux(QObject *parent,
                            bool _swtichedOn,
                            int _brightness,
                            int _saturation,
                            int _lampnumber,
-                           QString _ip):CPhillips(parent,
+                           QString _ip):CPhilips(parent,
                                                   _swtichedOn,
                                                   _brightness,
                                                   _saturation,

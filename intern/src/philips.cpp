@@ -1,4 +1,4 @@
-#include "phillips.h"
+#include "philips.h"
 
 
 #include <QNetworkAccessManager>
@@ -6,20 +6,20 @@
 #include <QJsonDocument>
 
 ///
-/// \brief CPhillips::CPhillips
+/// \brief CPhilips::CPhilips
 /// \param parent
-/// this class is used for the Philipps Hue Emulator
+/// this class is used for the Philips Hue Emulator
 /// the URL is in the Header which will be editable in the future, right now the ip and port is hard coded
 /// this baseclass implements only functionalities which can be found in the LUX and HUE lamps
 /// it will wait until the API responds, will maybe changed into an asynchronous thread right now it waits
 ///
 
-CPhillips::CPhillips(QObject *parent) : QObject(parent)
+CPhilips::CPhilips(QObject *parent) : QObject(parent)
 {
 
 }
 ///
-/// \brief CPhillips::CPhillips
+/// \brief CPhilips::CPhilips
 /// \param parent
 /// \param _swtichedOn
 /// \param _brightness
@@ -30,7 +30,7 @@ CPhillips::CPhillips(QObject *parent) : QObject(parent)
 /// reachable implement to check if bulb is connected to bridge use button in ui for explicit test of the lamp
 ///
 ///
-CPhillips::CPhillips(QObject *parent,
+CPhilips::CPhilips(QObject *parent,
                      bool   _swtichedOn,
                      int    _brightness,
                      int    _saturation,
@@ -56,42 +56,42 @@ CPhillips::CPhillips(QObject *parent,
     callBridge(body);
 }
 
-CPhillips::~CPhillips()
+CPhilips::~CPhilips()
 {
 
 }
 
 ///
-/// \brief CPhillips::setBrightness
+/// \brief CPhilips::setBrightness
 /// Value has to be between 0 and 254 otherwise useless
 /// maybe implement with slider in app
 ///  \param _brightness
 ///
-void CPhillips::setBrightness(int _brightness)
+void CPhilips::setBrightness(int _brightness)
 {
     QJsonObject onObject;
     onObject.insert("bri",_brightness);
     callBridge(QJsonDocument(onObject));
 }
 ///
-/// \brief CPhillips::setSaturation
+/// \brief CPhilips::setSaturation
 /// same as brightness
 ///  \param _saturation
 ///
-void CPhillips::setSaturation(int _saturation)
+void CPhilips::setSaturation(int _saturation)
 {
     QJsonObject onObject;
     onObject.insert("sat",_saturation);
     callBridge(QJsonDocument(onObject));
 }
 
-void CPhillips::switchOn()
+void CPhilips::switchOn()
 {
     QJsonObject onObject;
     onObject.insert("on","true");
     callBridge(QJsonDocument(onObject));
 }
-void CPhillips::switchOff()
+void CPhilips::switchOff()
 {
     QJsonObject onObject;
     onObject.insert("on","false");
@@ -99,17 +99,17 @@ void CPhillips::switchOff()
 }
 
 ///
-/// \brief CPhillips::callBridge
+/// \brief CPhilips::callBridge
 /// connects to the hue bridge and send commands to the individual lamps
 /// create a QJsonDocument which will be accepted by the hue bridge
 /// for examples see https://developers.meethue.com/documentation/getting-started
 /// thank you for your attention
 /// \param _body
 ///
-QString CPhillips::callBridge(QJsonDocument _body)
+QString CPhilips::callBridge(QJsonDocument _body)
 {
-    qDebug() << _body.toJson();
-    qDebug() << m_APICall;
+    //qDebug() << _body.toJson();
+    //qDebug() << m_APICall;
     QUrl temp = QUrl(m_APICall);
     QNetworkRequest request(temp);
     request.setHeader(QNetworkRequest::ContentTypeHeader, QString("application/json"));
@@ -121,12 +121,12 @@ QString CPhillips::callBridge(QJsonDocument _body)
     return m_replyMessage;
 }
 
-void CPhillips::waitForReply()
+void CPhilips::waitForReply()
 {
     m_replyMessage= reply->readAll();
 }
 
-void CPhillips::updateAPICall()
+void CPhilips::updateAPICall()
 {
     m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
 }

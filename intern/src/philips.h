@@ -1,21 +1,21 @@
-#ifndef PHILLIPS_H
-#define PHILLIPS_H
+#ifndef Philips_H
+#define Philips_H
 
 #include <QObject>
 #include <QNetworkReply>
 
-class CPhillips:public QObject
+class CPhilips:public QObject
 {
     Q_OBJECT
 public:
-    CPhillips(QObject *parent = 0);
-    CPhillips(QObject *parent,
+    CPhilips(QObject *parent = 0);
+    CPhilips(QObject *parent,
                          bool   _swtichedOn,
                          int    _brightness,
                          int    _saturation,
                          int    _lampnumber,
                          QString _ip);
-    ~CPhillips();
+    ~CPhilips();
 
     void        switchOn();
     void        switchOff();
@@ -45,4 +45,4 @@ private slots:
 
 };
 
-#endif // PHILLIPS_H
+#endif // Philips_H

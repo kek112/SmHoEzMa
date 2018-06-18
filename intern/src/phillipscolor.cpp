@@ -1,21 +1,21 @@
-#include "phillipscolor.h"
-#include "phillips.h"
+#include "Philipscolor.h"
+#include "Philips.h"
 #include <QNetworkAccessManager>
 #include <QJsonObject>
 #include <QJsonDocument>
 
-CPhillipsColor::CPhillipsColor(QObject *parent)
+CPhilipsColor::CPhilipsColor(QObject *parent)
 {
 
 }
 
-CPhillipsColor::CPhillipsColor(QObject *parent,
+CPhilipsColor::CPhilipsColor(QObject *parent,
                                bool _swtichedOn,
                                int _brightness,
                                int _saturation,
                                int _lampnumber,
                                QString _ip,
-                               int _hueValue) : CPhillips
+                               int _hueValue) : CPhilips
                                                 ( parent,
                                                  _swtichedOn,
                                                  _brightness,
@@ -26,11 +26,11 @@ CPhillipsColor::CPhillipsColor(QObject *parent,
     m_hueValue=_hueValue;
 }
 
-void CPhillipsColor::setHueValue(int _huevalue)
+void CPhilipsColor::setHueValue(int _huevalue)
 {
     QJsonObject onObject;
     onObject.insert("hue",_huevalue);
-    CPhillips::callBridge(QJsonDocument(onObject));
+    CPhilips::callBridge(QJsonDocument(onObject));
 }
 
 
