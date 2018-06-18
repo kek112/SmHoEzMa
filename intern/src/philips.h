@@ -22,10 +22,24 @@ public:
     void        setBrightness(int _brightness);
     void        setSaturation(int _saturation);
     QString     callBridge(QJsonDocument _body);
+    QString     callBridge();
+    //TODO
+
+    bool        getOnOffState();
+    int         getBrightness();
+    int         getSaturation();
+
+    QString     getAPICall() const;
+
+    void        setStates();
 
 private:
     QNetworkAccessManager   manager;
     QNetworkReply*          reply;
+
+    bool    m_actualSwitchedOn;
+    int     m_actualBrightness;
+    int     m_actualSaturation;
 
     bool    m_switchedOn;
     int     m_brightness;
@@ -34,14 +48,16 @@ private:
     int     m_lampNumber;
     QString m_replyMessage;
 
-    QString  m_ip       = "192.168.178.64";
-    QString  m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
+    QString  m_ip               = "192.168.178.64";
+    QString  m_APICall          = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
+    QString  m_APICallForGet    = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/";
+
 
 private:
     void        updateAPICall();
 
 private slots:
-    void    waitForReply();
+    void        waitForReply();
 
 };
 

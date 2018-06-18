@@ -8,6 +8,9 @@ class CHumiditySensor : public QObject
 {
     Q_OBJECT
 public:
+    ////
+    /// sensordaten in pushdown menü
+    ///
     CHumiditySensor(int    _sensorNumber,
                     QString _ip);
 

@@ -26,13 +26,8 @@ signals:
 
 private slots:
 
-    void        tst_switchOn        ();
-    void        tst_switchOff       ();
-    void        tst_setBrightness   (int _brightness);
-    void        tst_setSaturation   (int _saturation);
     QString     tst_callBridge      (QJsonDocument _body);
     void        tst_updateAPICall   ();
-    void        tst_waitForReply    ();
 
 };
 

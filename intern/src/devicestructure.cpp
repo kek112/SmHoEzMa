@@ -72,7 +72,6 @@ bool CDeviceStructure::save()
 /// load all devices from xml into struct
 /// best when called first so u have a device list :)
 /// check if xml exists
-/// return
 /// \return
 ///
 bool CDeviceStructure::load()
@@ -172,6 +171,13 @@ bool CDeviceStructure::deleteDevice(QString _Name)
     return false;
 }
 
+bool CDeviceStructure::deleteDevice(int _Index)
+{
+    if(_Index>=m_Devices.size())
+        return false;
+    m_Devices.removeAt(_Index);
+    return true;
+}
 ///
 /// \brief retrievElements
 /// runs through all nodes under the tag and puts them into the device list
@@ -179,7 +185,7 @@ bool CDeviceStructure::deleteDevice(QString _Name)
 /// needs root element from where to start
 /// \param tag
 /// specify which node is important
-/// /// <Devices>
+/// <Devices>
 /// <Name=””, IpAddress=””, MacAddress=””,DeviceType=””, DeviceNumber="">
 /// <Name=””, IpAddress=””, MacAddress=””,DeviceType=””, DeviceNumber="">
 /// <Name=””, IpAddress=””, MacAddress=””,DeviceType=””, DeviceNumber="">

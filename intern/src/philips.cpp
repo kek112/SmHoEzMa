@@ -114,11 +114,53 @@ QString CPhilips::callBridge(QJsonDocument _body)
     QNetworkRequest request(temp);
     request.setHeader(QNetworkRequest::ContentTypeHeader, QString("application/json"));
 
-   reply = manager.put(request, _body.toJson());
+    reply = manager.put(request, _body.toJson());
 
     connect(reply , SIGNAL(readyRead()) , this , SLOT(waitForReply()));
 
     return m_replyMessage;
+}
+QString CPhilips::callBridge()
+{
+    QUrl temp = QUrl(m_APICall);
+    QNetworkRequest request(temp);
+
+    reply = manager.get(request);
+
+    connect(reply , SIGNAL(readyRead()) , this , SLOT(waitForReply()));
+
+    return m_replyMessage;
+}
+
+void CPhilips::setStates()
+{
+
+    QString answer = callBridge();
+
+
+    m_actualSwitchedOn;
+    m_actualBrightness;
+    m_actualSaturation;
+}
+
+bool CPhilips::getOnOffState()
+{
+    return m_actualSwitchedOn;
+}
+
+int CPhilips::getBrightness()
+{
+    return m_actualBrightness;
+}
+
+int CPhilips::getSaturation()
+{
+    return m_actualSaturation;
+}
+
+QString CPhilips::getAPICall() const
+{
+    return m_APICall;
 }
 
 void CPhilips::waitForReply()
