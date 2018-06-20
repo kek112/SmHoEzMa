@@ -30,6 +30,11 @@ private slots:
     void closeMenu(bool _sendSignal = false);
     void openMenu();
 
+    void ShowDevices();
+    void ShowAbout();
+
+    void SleepModus();
+
 private:
     CAppHeader*         m_pAppHeader;
     QStackedLayout*     m_pMainWidgetStack;

@@ -7,7 +7,7 @@
 #
 #       HIER EINFÜGEN
 #
-QT       += core gui network positioning xml
+QT       += core gui network positioning xml quickwidgets
 #
 #       HIER EINFÜGEN
 #
@@ -62,7 +62,6 @@ SOURCES += \
     intern/src/appheader.cpp \
     intern/src/closemenueventfilter.cpp \
     intern/src/devicelistview.cpp \
-    intern/src/devicesettingsview.cpp \
     intern/src/mainview.cpp \
     intern/src/menubar.cpp
 
@@ -80,7 +79,6 @@ HEADERS += \
     intern/src/appheader.h \
     intern/src/closemenueventfilter.h \
     intern/src/devicelistview.h \
-    intern/src/devicesettingsview.h \
     intern/src/mainview.h \
     intern/src/menubar.h
 
@@ -88,4 +86,5 @@ include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)
 
 RESOURCES += \
-    intern/assets/icons/icons.qrc
+    intern/assets/icons/icons.qrc \
+    intern/src/qml.qrc
