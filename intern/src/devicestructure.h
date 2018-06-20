@@ -12,7 +12,7 @@ public:
 
     ///
     /// \brief The EDevices enum
-    /// create for every device own class with individual functions
+    /// this will decide which options are displayed on the view and which classes are to be created
     ///
     enum EDevices
     {
@@ -37,6 +37,7 @@ public:
     CDeviceStructure();
     bool save();
     bool load();
+    bool deleteDevice(int _Index);
     bool deleteDevice(QString _Name);
     bool addDevices(QString       _Name,
                     QHostAddress  _IpAddress,
@@ -46,7 +47,7 @@ public:
 
 
     QList<Device> returnDevices();
-    QList<Device> retrievElements(QDomElement root, QString tag);
+    QList<Device> retrieveElements(QDomElement root, QString tag);
 
 
 private:
@@ -58,6 +59,7 @@ private:
     QString m_XmlIpAdressString     = "IpAddress";
     QString m_XmlMacAddressString   = "MacAddress";
     QString m_XmlDeviceTypeString   = "DeviceType";
+    QString m_XmlDeviceNumber       = "DeviceNumber";
 
 
 

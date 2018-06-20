@@ -1,7 +1,12 @@
 #include "pingmodel.h"
 
 
-
+///
+/// erster versuch um netzwerk nach geräten abzusuchen
+/// fehlschlag da dieser ansatz ca 20min gedauert hat
+/// wird nun hart eingespeichert, vlt im nächsten release
+///
+///
 
 CPingModel::CPingModel(QObject *parent) :
     QObject(parent), running(false)

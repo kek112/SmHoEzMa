@@ -1,12 +1,12 @@
-#ifndef PHILLIPSLUX_H
-#define PHILLIPSLUX_H
-#include "phillips.h"
+#ifndef PhilipsLUX_H
+#define PhilipsLUX_H
+#include "Philips.h"
 
-class CPhillipsLux : public CPhillips
+class CPhilipsLux : public CPhilips
 {
 public:
-    CPhillipsLux(QObject *parent = 0);
-    CPhillipsLux(QObject *parent,
+    CPhilipsLux(QObject *parent = 0);
+    CPhilipsLux(QObject *parent,
                    bool     _swtichedOn,
                    int      _brightness,
                    int      _saturation,
@@ -15,4 +15,4 @@ public:
 };
 
 
-#endif // PHILLIPSLUX_H
+#endif // PhilipsLUX_H
