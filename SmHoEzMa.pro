@@ -66,7 +66,8 @@ SOURCES += \
     intern/src/menubar.cpp \
     intern/tests/tst_Philips.cpp \
     intern/src/philips.cpp \
-    intern/src/philips.cpp
+    intern/src/philips.cpp \
+    intern/src/tempereratursensor.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
@@ -86,7 +87,8 @@ HEADERS += \
     intern/src/menubar.h \
     intern/tests/tst_Philips.h \
     intern/src/philips.h \
-    intern/src/philips.h
+    intern/src/philips.h \
+    intern/src/tempereratursensor.h
 
 include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)

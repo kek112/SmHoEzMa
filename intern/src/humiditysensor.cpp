@@ -19,6 +19,7 @@ CHumiditySensor::CHumiditySensor(int _sensorNumber, QString _ip)
 
 int CHumiditySensor::getHumidity()
 {
+    int retval = -100;
     QUrl temp = QUrl(m_APICall);
     QNetworkRequest request(temp);
 
@@ -26,11 +27,13 @@ int CHumiditySensor::getHumidity()
 
     connect(reply , SIGNAL(readyRead()) , this , SLOT(waitForReply()));
 
-     qDebug() << m_replyMessage;
-    ///
-    /// convert the JSOn into usable value
-    ///
-    return -1;
+
+    QJsonObject json = reply;
+
+    if(json.contains("HumidPerCent")        &&  json["HumidPerCent"].isDouble())
+        retval                              =   json["HumidPerCent"].toInt();
+
+    return retval;
 }
 
 void CHumiditySensor::waitForReply()

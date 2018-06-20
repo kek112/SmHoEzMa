@@ -133,14 +133,27 @@ QString CPhilips::callBridge()
 }
 
 void CPhilips::setStates()
-{
+{    
+    QJsonObject jsonAll = callBridge();
 
-    QString answer = callBridge();
+    if(jsonAll.contains("state")   &&  jsonAll["state"].isObject())
+    {
+        QJsonObject json            =  jsonAll["state"];
 
+        if(json.contains("on")      &&  json["on"].isBool())
+            m_actualSwitchedOn      =   json["on"];
 
-    m_actualSwitchedOn;
-    m_actualBrightness;
-    m_actualSaturation;
+        if(json.contains("bri")     &&  json["bri"].isDouble())
+            m_actualBrightness      =   json["bri"].toInt();
+
+        if(json.contains("sat")     &&  json["sat"].isDouble())
+            m_actualSaturation      =   json["sat"].toInt();
+    }
+    else
+    {
+        throw("state couldnt be found in json, check the response");
+    }
+
 }
 
 bool CPhilips::getOnOffState()

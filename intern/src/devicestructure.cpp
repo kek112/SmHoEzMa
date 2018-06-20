@@ -132,7 +132,7 @@ bool CDeviceStructure::addDevices(  QString       _Name,
 {
     Device device;
 
-    //check if list filled with at least one element
+    //check if list filled with at least one element otherwise just append it
     if(!m_Devices.isEmpty())
     {
         //go through every device in the list to check for existing name
@@ -175,13 +175,18 @@ bool CDeviceStructure::addDevices(  QString       _Name,
 bool CDeviceStructure::deleteDevice(QString _Name)
 {
     int cunter=0;
-    foreach (Device tempdevice, m_Devices)
+    //check if list filled with at least one element
+    if(!m_Devices.isEmpty())
     {
-        cunter++;
-        if(tempdevice.m_Name == _Name)
+            //go through every device in the list to check for existing name
+        for (auto tempdevice : devicelist)
         {
-            m_Devices.removeAt(cunter);
-            return true;
+            cunter++;
+            if(tempdevice.m_Name == _Name)
+            {
+                m_Devices.removeAt(cunter);
+                return true;
+            }
         }
     }
     return false;
@@ -189,10 +194,17 @@ bool CDeviceStructure::deleteDevice(QString _Name)
 
 bool CDeviceStructure::deleteDevice(int _Index)
 {
-    if(_Index>=m_Devices.size())
+    if(!m_Devices.isEmpty())
+    {
+        if(_Index>=m_Devices.size())
+            return false;
+        m_Devices.removeAt(_Index);
+        return true;
+    }else
+    {
         return false;
-    m_Devices.removeAt(_Index);
-    return true;
+    }
+
 }
 ///
 /// \brief retrievElements
