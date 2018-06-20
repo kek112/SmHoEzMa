@@ -132,22 +132,38 @@ bool CDeviceStructure::addDevices(  QString       _Name,
 {
     Device device;
 
-    foreach (Device tempdevice, m_Devices)
+    //check if list filled with at least one element
+    if(!m_Devices.isEmpty())
     {
-        if(tempdevice.m_Name == _Name)
+        //go through every device in the list to check for existing name
+        for (auto tempdevice : devicelist)
         {
-            return false;
+            if(tempdevice.m_Name == _Name)
+            {
+                return false;
+            }
         }
+        device.m_Name           = _Name;
+        device.m_IpAddress      = _IpAddress;
+        device.m_MacAddress     = _MacAddress;
+        device.m_DeviceType     = _DeviceType;
+        device.m_DeviceNumber   = _DeviceNumber;
+
+        m_Devices.append(device);
+        return true;
+    }else
+    {
+        device.m_Name           = _Name;
+        device.m_IpAddress      = _IpAddress;
+        device.m_MacAddress     = _MacAddress;
+        device.m_DeviceType     = _DeviceType;
+        device.m_DeviceNumber   = _DeviceNumber;
+
+        m_Devices(device);
+        return true;
     }
 
-    device.m_Name           = _Name;
-    device.m_IpAddress      = _IpAddress;
-    device.m_MacAddress     = _MacAddress;
-    device.m_DeviceType     = _DeviceType;
-    device.m_DeviceNumber   = _DeviceNumber;
 
-    m_Devices.append(device);
-    return true;
 }
 
 ///
