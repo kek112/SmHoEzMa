@@ -36,8 +36,8 @@ CMainView::CMainView(QWidget *parent) : QWidget(parent)
     connect(this, SIGNAL(sendIsMenuVisible(bool)), pEventFilter, SLOT(setIsMenuVisible(bool)));
     connect(m_pAppHeader, SIGNAL(MenuButtonPressed()), this, SLOT(triggerMenu()));
 
-
-
+    connect(m_pMenuBar, SIGNAL(AboutButtonPressed()), this, SLOT(ShowAbout()));
+    connect(m_pMenuBar, SIGNAL(DeviceButtonPressed()), this, SLOT(ShowDevices()));
 }
 
 void CMainView::resizeEvent(QResizeEvent *_event)
@@ -78,4 +78,22 @@ void CMainView::openMenu()
 {
     m_pMenuBar->show();
     emit sendIsMenuVisible(true);
+}
+
+void CMainView::ShowDevices()
+{
+    m_pMainWidgetStack->setCurrentWidget(m_pDeviceView);
+    closeMenu(true);
+}
+
+void CMainView::ShowAbout()
+{
+    m_pMainWidgetStack->setCurrentWidget(m_pAboutView);
+    closeMenu(true);
+}
+
+void CMainView::SleepModus()
+{
+    //turn off all Devices
+    closeMenu(true);
 }

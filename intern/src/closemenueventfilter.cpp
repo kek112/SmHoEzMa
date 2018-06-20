@@ -12,10 +12,10 @@ void CCloseMenuEventFilter::setIsMenuVisible(bool _visible)
 
 bool CCloseMenuEventFilter::eventFilter(QObject *obj, QEvent *event)
 {
-    /*if(event->type() == QEvent::MouseButtonPress)
+    if(event->type() == QEvent::MouseButtonPress)
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-        if(mouseEvent->globalPos().x() > (qApp->activeWindow()->size().width() * 0.7) && isMenuVisible)
+        if(mouseEvent->windowPos().x() > (qApp->activeWindow()->size().width() * 0.7) && isMenuVisible)
         {
             return true;
         }
@@ -24,11 +24,10 @@ bool CCloseMenuEventFilter::eventFilter(QObject *obj, QEvent *event)
             return QObject::eventFilter(obj, event);
         }
     }
-    else*/
-    if (event->type() == QEvent::MouseButtonRelease)
+    else if (event->type() == QEvent::MouseButtonRelease)
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-        if(mouseEvent->globalPos().x() > (qApp->activeWindow()->size().width() * 0.7) && isMenuVisible)
+        if(mouseEvent->windowPos().x() > (qApp->activeWindow()->size().width() * 0.7) && isMenuVisible)
         {
             emit closeMenu();
             isMenuVisible = false;

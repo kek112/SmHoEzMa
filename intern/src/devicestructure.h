@@ -8,7 +8,7 @@
 class CDeviceStructure
 {
 
-private:
+public:
 
     ///
     /// \brief The EDevices enum
@@ -31,6 +31,7 @@ public:
       EDevices      m_DeviceType;
       int           m_DeviceNumber;
     };
+
 
 public:
     CDeviceStructure();
@@ -64,5 +65,7 @@ private:
 
 
 };
+
+Q_DECLARE_METATYPE(CDeviceStructure::EDevices)
 
 #endif // DEVICESTRUCTURE_H

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CMainView_t {
-    QByteArrayData data[8];
-    char stringdata0[81];
+    QByteArrayData data[11];
+    char stringdata0[114];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,12 +38,16 @@ QT_MOC_LITERAL(3, 29, 8), // "_visible"
 QT_MOC_LITERAL(4, 38, 11), // "triggerMenu"
 QT_MOC_LITERAL(5, 50, 9), // "closeMenu"
 QT_MOC_LITERAL(6, 60, 11), // "_sendSignal"
-QT_MOC_LITERAL(7, 72, 8) // "openMenu"
+QT_MOC_LITERAL(7, 72, 8), // "openMenu"
+QT_MOC_LITERAL(8, 81, 11), // "ShowDevices"
+QT_MOC_LITERAL(9, 93, 9), // "ShowAbout"
+QT_MOC_LITERAL(10, 103, 10) // "SleepModus"
 
     },
     "CMainView\0sendIsMenuVisible\0\0_visible\0"
     "triggerMenu\0closeMenu\0_sendSignal\0"
-    "openMenu"
+    "openMenu\0ShowDevices\0ShowAbout\0"
+    "SleepModus"
 };
 #undef QT_MOC_LITERAL
 
@@ -53,7 +57,7 @@ static const uint qt_meta_data_CMainView[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -61,13 +65,16 @@ static const uint qt_meta_data_CMainView[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   39,    2, 0x06 /* Public */,
+       1,    1,   54,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   42,    2, 0x08 /* Private */,
-       5,    1,   43,    2, 0x08 /* Private */,
-       5,    0,   46,    2, 0x28 /* Private | MethodCloned */,
-       7,    0,   47,    2, 0x08 /* Private */,
+       4,    0,   57,    2, 0x08 /* Private */,
+       5,    1,   58,    2, 0x08 /* Private */,
+       5,    0,   61,    2, 0x28 /* Private | MethodCloned */,
+       7,    0,   62,    2, 0x08 /* Private */,
+       8,    0,   63,    2, 0x08 /* Private */,
+       9,    0,   64,    2, 0x08 /* Private */,
+      10,    0,   65,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -75,6 +82,9 @@ static const uint qt_meta_data_CMainView[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,    6,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -92,6 +102,9 @@ void CMainView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 2: _t->closeMenu((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 3: _t->closeMenu(); break;
         case 4: _t->openMenu(); break;
+        case 5: _t->ShowDevices(); break;
+        case 6: _t->ShowAbout(); break;
+        case 7: _t->SleepModus(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -131,13 +144,13 @@ int CMainView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 8;
     }
     return _id;
 }

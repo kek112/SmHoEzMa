@@ -7,7 +7,11 @@
 #
 #       HIER EINFÜGEN
 #
+<<<<<<< HEAD
 QT       += core gui network positioning xml testlib
+=======
+QT       += core gui network positioning xml quickwidgets
+>>>>>>> Started AddDeviceView
 #
 #       HIER EINFÜGEN
 #
@@ -67,7 +71,6 @@ SOURCES += \
     intern/src/appheader.cpp \
     intern/src/closemenueventfilter.cpp \
     intern/src/devicelistview.cpp \
-    intern/src/devicesettingsview.cpp \
     intern/src/mainview.cpp \
 <<<<<<< HEAD
     intern/src/menubar.cpp \
@@ -98,7 +101,6 @@ HEADERS += \
     intern/src/appheader.h \
     intern/src/closemenueventfilter.h \
     intern/src/devicelistview.h \
-    intern/src/devicesettingsview.h \
     intern/src/mainview.h \
 <<<<<<< HEAD
     intern/src/menubar.h \
@@ -114,4 +116,5 @@ include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)
 
 RESOURCES += \
-    intern/assets/icons/icons.qrc
+    intern/assets/icons/icons.qrc \
+    intern/src/qml.qrc

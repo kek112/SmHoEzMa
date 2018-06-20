@@ -5,7 +5,9 @@ CAppHeader::CAppHeader(QWidget *parent) : QWidget(parent)
     m_pAppNameLabel = new QLabel("SmHoEzMa", this);
 
     m_pNavigationButton = new QPushButton(this);
-    m_pNavigationButton->setFlat(true);
+    m_pNavigationButton->setIconSize(QSize(96,96));
+    m_pNavigationButton->setFocusPolicy(Qt::NoFocus);
+
     connect(m_pNavigationButton, SIGNAL(clicked(bool)), this, SIGNAL(MenuButtonPressed()));
 
     m_pMainLayout = new QHBoxLayout();
@@ -21,10 +23,10 @@ CAppHeader::CAppHeader(QWidget *parent) : QWidget(parent)
 
 void CAppHeader::setNavigationMenu()
 {
-    m_pNavigationButton->setIcon(QIcon(":/menu"));
+    m_pNavigationButton->setIcon(QIcon(":/menuIcon"));
 }
 
 void CAppHeader::setNavigationBack()
 {
-    m_pNavigationButton->setIcon(QIcon(":/back"));
+    m_pNavigationButton->setIcon(QIcon(":/backIcon"));
 }
