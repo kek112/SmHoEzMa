@@ -1,8 +1,9 @@
 #ifndef APPHEADER_H
 #define APPHEADER_H
 
+#include "custombutton.h"
+
 #include <QLabel>
-#include <QPushButton>
 #include <QHBoxLayout>
 #include <QWidget>
 
@@ -21,7 +22,7 @@ public slots:
 
 private:
     QLabel*         m_pAppNameLabel;
-    QPushButton*    m_pNavigationButton;
+    CCustomButton*    m_pNavigationButton;
 
     QHBoxLayout*    m_pMainLayout;
 };

@@ -1,10 +1,11 @@
 #ifndef MENUBAR_H
 #define MENUBAR_H
 
+#include "custombutton.h"
+
 #include <QButtonGroup>
 #include <QPixmap>
 #include <QLabel>
-#include <QPushButton>
 #include <QResizeEvent>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -30,9 +31,9 @@ private:
     QPixmap          m_Image;
 
     QLabel*         m_pImageLabel;
-    QPushButton*    m_pDevicesButton;
-    QPushButton*    m_pAboutButton;
-    QPushButton*    m_pSleepButton;
+    CCustomButton*    m_pDevicesButton;
+    CCustomButton*    m_pAboutButton;
+    CCustomButton*    m_pSleepButton;
 
     QVBoxLayout*    m_pMainLayout;
 };

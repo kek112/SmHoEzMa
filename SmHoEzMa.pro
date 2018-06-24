@@ -36,7 +36,7 @@ QT       += core gui network positioning xml quickwidgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SmHoEzMa
-TEMPLATE = app subdirs
+TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -49,7 +49,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += qtc_runnable testcase
+CONFIG += qtc_runnable
 
 SOURCES += \
         intern/src/main.cpp \
@@ -58,6 +58,7 @@ SOURCES += \
     intern/src/androidsensor.cpp \
     intern/src/devicestructure.cpp \
 <<<<<<< HEAD
+<<<<<<< HEAD
     intern/src/Philipscolor.cpp \
     intern/src/PhilipsLux.cpp \
 =======
@@ -65,6 +66,10 @@ SOURCES += \
     intern/src/phillipscolor.cpp \
     intern/src/phillipsLux.cpp \
 >>>>>>> fixed pro file, started working on popup menu
+=======
+    intern/src/philipscolor.cpp \
+    intern/src/philipsLux.cpp \
+>>>>>>> emergency commit
     intern/src/humiditysensor.cpp \
     intern/src/aboutview.cpp \
     intern/src/adddeviceview.cpp \
@@ -76,17 +81,23 @@ SOURCES += \
     intern/src/menubar.cpp \
     intern/tests/tst_Philips.cpp \
     intern/src/philips.cpp \
+<<<<<<< HEAD
     intern/src/philips.cpp \
     intern/src/tempereratursensor.cpp
 =======
     intern/src/menubar.cpp
 >>>>>>> fixed pro file, started working on popup menu
+=======
+    intern/src/custombutton.cpp \
+    intern/src/deviceview.cpp
+>>>>>>> emergency commit
 
 HEADERS += \
         intern/src/mainwindow.h \
     intern/src/pingmodel.h \
     intern/src/androidsensor.h \
     intern/src/devicestructure.h \
+<<<<<<< HEAD
 <<<<<<< HEAD
     intern/src/Philipscolor.h \
     intern/src/PhilipsLux.h \
@@ -95,6 +106,10 @@ HEADERS += \
     intern/src/phillipscolor.h \
     intern/src/phillipsLux.h \
 >>>>>>> fixed pro file, started working on popup menu
+=======
+    intern/src/philipscolor.h \
+    intern/src/philipsLux.h \
+>>>>>>> emergency commit
     intern/src/humiditysensor.h \
     intern/src/aboutview.h \
     intern/src/adddeviceview.h \
@@ -106,11 +121,16 @@ HEADERS += \
     intern/src/menubar.h \
     intern/tests/tst_Philips.h \
     intern/src/philips.h \
+<<<<<<< HEAD
     intern/src/philips.h \
     intern/src/tempereratursensor.h
 =======
     intern/src/menubar.h
 >>>>>>> fixed pro file, started working on popup menu
+=======
+    intern/src/custombutton.h \
+    intern/src/deviceview.h
+>>>>>>> emergency commit
 
 include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)

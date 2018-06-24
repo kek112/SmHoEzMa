@@ -4,8 +4,6 @@
 #include "mainview.h"
 
 #include <QApplication>
-#include <QQuickWidget>
-#include <QQmlEngine>
 #include <QMainWindow>
 
 class MainWindow : public QMainWindow

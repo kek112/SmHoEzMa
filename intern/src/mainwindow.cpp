@@ -10,13 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(m_pMainView);
 
 //    m_pMainView->setStyleSheet("border: 1px solid red");
-    setStyleSheet( "QWidget {background: white}"
-                   "QPushButton {border: none; background: transparent; min-height: 2em; min-width: 2em}"
-                   "QPushButton:pressed {border: 1px solid lightskyblue; background: lightblue;}"
-                   "QPushButton:focus {border: none;}"
-                   "QPushButton:focus:pressed {border: none;}"
-                   "QPushButton:hover {border: none;}"
-                   "QPushButton:edit-focus {border: none;}");
+    setStyleSheet( "QWidget {background: #b3d2b2; font-size: 20pt}"
+                   "CCustomButton {border: none; background: transparent; min-height: 2em; min-width: 2em}"
+                   "CCustomButton:pressed {border: 1px solid lightskyblue; background: lightblue;}"
+                   "QSpinBox::down-button {subcontrol-origin: border; subcontrol-position: right; min-width: 75px; min-height: 75px}"
+                   "QSpinBox::up-button {subcontrol-origin: border; subcontrol-position: left; min-width: 75px; min-height: 75px}");
 
 //    QQuickWidget *view = new QQuickWidget;
 //    view->setSource(QUrl("qrc:/MainView.qml"));
