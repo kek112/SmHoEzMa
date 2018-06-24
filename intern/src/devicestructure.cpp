@@ -136,7 +136,7 @@ bool CDeviceStructure::addDevices(  QString       _Name,
     if(!m_Devices.isEmpty())
     {
         //go through every device in the list to check for existing name
-        for (auto tempdevice : devicelist)
+        for (auto tempdevice : m_Devices)
         {
             if(tempdevice.m_Name == _Name)
             {
@@ -159,7 +159,7 @@ bool CDeviceStructure::addDevices(  QString       _Name,
         device.m_DeviceType     = _DeviceType;
         device.m_DeviceNumber   = _DeviceNumber;
 
-        m_Devices(device);
+        m_Devices.append(device);
         return true;
     }
 

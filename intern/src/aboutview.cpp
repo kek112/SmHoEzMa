@@ -8,6 +8,7 @@ CAboutView::CAboutView(QWidget *parent) : QWidget(parent)
                               " - Tobias Rieß\n"
                               " - Karl-Erik Kley\n"
                               " - Martin Lesser\n", this);
+    m_pTextField->setAlignment(Qt::AlignCenter);
 
     m_pMainLayout = new QHBoxLayout();
 

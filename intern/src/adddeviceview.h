@@ -1,13 +1,13 @@
 #ifndef ADDDEVICEVIEW_H
 #define ADDDEVICEVIEW_H
 
+#include "custombutton.h"
 #include "devicestructure.h"
 
 #include <QComboBox>
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
-#include <QPushButton>
 #include <QSpinBox>
 #include <QWidget>
 
@@ -41,8 +41,8 @@ private:
     QLabel*         m_pTypeLabel;
     QComboBox*      m_pTypeCombo;
 
-    QPushButton*    m_pAcceptButton;
-    QPushButton*    m_pCancelButton;
+    CCustomButton*    m_pAcceptButton;
+    CCustomButton*    m_pCancelButton;
 
     QGridLayout*    m_pMainLayout;
 };

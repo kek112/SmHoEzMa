@@ -2,11 +2,11 @@
 #define DEVICELISTVIEW_H
 
 #include "adddeviceview.h"
+#include "custombutton.h"
 #include "devicestructure.h"
 
 #include <QGridLayout>
 #include <QLabel>
-#include <QPushButton>
 #include <QStackedLayout>
 #include <QToolBox>
 #include <QWidget>
@@ -26,12 +26,14 @@ private slots:
     void AddDevice(CDeviceStructure::Device _toAdd);
 
 private:
+    void LoadDeviceList();
+
     QStackedLayout* m_pMainStackLayout;
     QGridLayout*    m_pDeviceListLayout;
 
     QToolBox*       m_pDeviceToolBox;
-    QPushButton*    m_pAddDeviceButton;
-    QPushButton*    m_pRemoveDeviceButton;
+    CCustomButton*    m_pAddDeviceButton;
+    CCustomButton*    m_pRemoveDeviceButton;
     CAddDeviceView* m_pAddDeviceView;
 
     CDeviceStructure* m_pDevices;

@@ -10,13 +10,9 @@ CMenuBar::CMenuBar(QWidget *parent) : QWidget(parent)
 
     QButtonGroup* menuButtonGroup = new QButtonGroup(this);
 
-    m_pDevicesButton = new QPushButton("Devices", this);
-    m_pAboutButton   = new QPushButton("About", this);
-    m_pSleepButton   = new QPushButton("Sleep", this);
-
-    m_pDevicesButton->setFocusPolicy(Qt::NoFocus);
-    m_pAboutButton  ->setFocusPolicy(Qt::NoFocus);
-    m_pSleepButton  ->setFocusPolicy(Qt::NoFocus);
+    m_pDevicesButton = new CCustomButton("Devices", this);
+    m_pAboutButton   = new CCustomButton("About", this);
+    m_pSleepButton   = new CCustomButton("Sleep", this);
 
     menuButtonGroup->addButton(m_pDevicesButton);
     menuButtonGroup->addButton(m_pAboutButton);
@@ -38,7 +34,7 @@ CMenuBar::CMenuBar(QWidget *parent) : QWidget(parent)
 
     setAutoFillBackground(true);
 
-    setStyleSheet("CMenuBar{border: 2px solid black; background: solid white}");
+    setStyleSheet("CMenuBar{border: 2px solid black;}");
 }
 
 void CMenuBar::priavteButtonPressed(QAbstractButton* _pressedButton)

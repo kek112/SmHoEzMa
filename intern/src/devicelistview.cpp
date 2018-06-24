@@ -2,17 +2,15 @@
 
 CDeviceListView::CDeviceListView(QWidget *parent) : QWidget(parent)
 {
+    m_pDevices = new CDeviceStructure();
+
     m_pDeviceToolBox = new QToolBox(this);
 
-    m_pAddDeviceButton = new QPushButton(this);
+    m_pAddDeviceButton = new CCustomButton(this);
     m_pAddDeviceButton->setIcon(QIcon(":/addIcon"));
-    m_pAddDeviceButton->setIconSize(QSize(96,96));
-    m_pAddDeviceButton->setFocusPolicy(Qt::NoFocus);
 
-    m_pRemoveDeviceButton = new QPushButton(this);
+    m_pRemoveDeviceButton = new CCustomButton(this);
     m_pRemoveDeviceButton->setIcon(QIcon(":/removeIcon"));
-    m_pRemoveDeviceButton->setIconSize(QSize(96,96));
-    m_pRemoveDeviceButton->setFocusPolicy(Qt::NoFocus);
 
     m_pDeviceListLayout = new QGridLayout();
 
@@ -49,7 +47,8 @@ void CDeviceListView::OpenAddDevice()
 void CDeviceListView::RemoveDevice()
 {
     int currentDevice = m_pDeviceToolBox->currentIndex();
-    m_pDevices->deleteDevice("currentDevice");
+    m_pDevices->deleteDevice(currentDevice);
+    m_pDeviceToolBox->removeItem(currentDevice);
 }
 
 void CDeviceListView::CancelAddDevice()
@@ -60,4 +59,15 @@ void CDeviceListView::CancelAddDevice()
 void CDeviceListView::AddDevice(CDeviceStructure::Device _toAdd)
 {
     m_pDevices->addDevices(_toAdd.m_Name, _toAdd.m_IpAddress, _toAdd.m_MacAddress, _toAdd.m_DeviceType, _toAdd.m_DeviceNumber);
+    m_pMainStackLayout->setCurrentIndex(0);
+    m_pDeviceToolBox->addItem(new QLabel(_toAdd.m_IpAddress.toString()), _toAdd.m_Name); //TODO: One Widget that gets constructed based on deviceType
 }
+
+void CDeviceListView::LoadDeviceList()
+{
+    for(auto& device: m_pDevices->returnDevices())
+    {
+        m_pDeviceToolBox->addItem(new QLabel(device.m_IpAddress.toString()), device.m_Name); //TODO: One Widget(CDeviceView) that gets constructed based on deviceType
+    }
+}
+

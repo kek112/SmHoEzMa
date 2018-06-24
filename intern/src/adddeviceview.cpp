@@ -12,6 +12,7 @@ CAddDeviceView::CAddDeviceView(QWidget *parent) : QWidget(parent)
     m_pIpEdit->setInputMask("000.000.000.000;_");
 
     m_pNumberSpin   = new QSpinBox(this);
+    m_pNumberSpin->setMinimumHeight(120);
     m_pNumberSpin->setMaximum(25);
     m_pNumberSpin->setMinimum(1);
 
@@ -21,8 +22,8 @@ CAddDeviceView::CAddDeviceView(QWidget *parent) : QWidget(parent)
     m_pTypeCombo->addItem("Temperaturesensor", CDeviceStructure::TEMPERATURESENSOR);
     m_pTypeCombo->addItem("Humiditysensor", CDeviceStructure::HUMIDITYSENSOR);
 
-    m_pAcceptButton = new QPushButton("Accept", this);
-    m_pCancelButton = new QPushButton("Cancel", this);
+    m_pAcceptButton = new CCustomButton("Accept", this);
+    m_pCancelButton = new CCustomButton("Cancel", this);
 
     m_pMainLayout = new QGridLayout();
 

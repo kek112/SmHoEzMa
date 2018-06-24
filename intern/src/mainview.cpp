@@ -22,6 +22,7 @@ CMainView::CMainView(QWidget *parent) : QWidget(parent)
 
     m_pMainLayout = new QVBoxLayout();
 
+    m_pMainLayout->setContentsMargins(0,0,0,0);
     m_pMainLayout->addWidget(m_pAppHeader);
     m_pMainLayout->addLayout(m_pMainWidgetStack, 1);
 

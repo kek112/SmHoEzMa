@@ -26,7 +26,6 @@ signals:
 
 private slots:
 
-    QString     tst_callBridge      (QJsonDocument _body);
     void        tst_updateAPICall   ();
 
 };

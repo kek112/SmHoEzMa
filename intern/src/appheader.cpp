@@ -4,9 +4,7 @@ CAppHeader::CAppHeader(QWidget *parent) : QWidget(parent)
 {
     m_pAppNameLabel = new QLabel("SmHoEzMa", this);
 
-    m_pNavigationButton = new QPushButton(this);
-    m_pNavigationButton->setIconSize(QSize(96,96));
-    m_pNavigationButton->setFocusPolicy(Qt::NoFocus);
+    m_pNavigationButton = new CCustomButton(this);
 
     connect(m_pNavigationButton, SIGNAL(clicked(bool)), this, SIGNAL(MenuButtonPressed()));
 
@@ -19,6 +17,8 @@ CAppHeader::CAppHeader(QWidget *parent) : QWidget(parent)
     m_pMainLayout->setContentsMargins(0,0,0,0);
 
     setNavigationMenu();
+
+    setStyleSheet("background: #7a9cc6");
 }
 
 void CAppHeader::setNavigationMenu()
