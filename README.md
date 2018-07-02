@@ -24,7 +24,7 @@ Nach dem Start der Software sollte dieses Bild angezeigt werden:
 In dieser Ansicht muss nur oben auf Start gedrückt werden um den Server zum laufen zu bekommen. 
 In diesem Emulator können noch zusätzliche Lampen hinzugefügt werden. In unserem Beispiel haben wir eine Lux Lampe erstellt. 
 
-![Emulator-Lampen](/images/EmulatorPNG.png)
+![Emulator-Lampen](/images/EmulatorPNG.PNG)
 
 Danach ist der Link(Links auf dem Bild) über die IP-Addresse des Rechners ansprechbar. 
 Die genauen REST-Abragen lassen sich mit in dem Repository welches verlinkt wurde finden. 
@@ -39,7 +39,7 @@ ASP.Net läuft in unserer Version über den IIS Express welcher in VS integriert
 
 Nach dem Start können darüber also auch REST-Requests durchgeführt werden welche wie folgt aussehen. 
 
-![Emulator-ASP.Net](/images/ASPnet.png)
+![Emulator-ASP.Net](/images/ASPnet.PNG)
 
 Als Empfehlung für den IIS Express ist es zu raten das eine Erweiterung installiert wird damit die IP-Adresse von außen ansprechbar ist, da ansonsten die Schnittstelle nur Lokal läuft und in einen vollwertigen IIS integriert werden muss. 
 
