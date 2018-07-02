@@ -55,4 +55,41 @@ Als Empfehlung für den IIS Express ist es zu raten das eine Erweiterung install
 
 ### Bedienung von SmHoEzMa 
 
-:clap: :100: :100: :100: :100:
+
+Der Startbildschirm von SmHoEzMa ist die Liste der eingespeicherten Geräte. Sollte man die App noch nicht gestartet haben so kann man anfangen und die Geräte über das Plus hinzuzufügen. 
+
+#####HIER BILD VON STARTSEITE ohne Gerät EINFÜGEN
+![SmHoEzMa-Startmenü](/images/.PNG)
+
+Möchte man ein neues Geräte hinzufügen so sollte man dessen IP Adresse kennen. Diese trägt man mit einem Namen der eigenen Wahl ein und lässt es hinzufügen. Dann mit einem Dropdown wird die Geräteklasse ausgewählt. Diese ist wichtig um zu wissen wie das Geräte später angesteuert werden muss. 
+
+#####HIER BILD VON GERÄT HINZUFÜGEN EINFÜGEN
+![SmHoEzMa-Gerät hinzufügen](/images/.PNG)
+
+Nachdem das entsprechende Gerät in der Liste aufgenommen wurde können verschiedene Funktionen ausgeführt werden. Je nach Gerätemodel werden andere Möglichkeiten der Ansteuerung dargestellt. So bietet ein Sensor nur die Abfrage des Wertes und eine Philips Hue bietet die Einstellung der Helligkeit, der Sättigung und des Farbwertes. 
+
+#####HIER BILD VON STARTSEITE mit philips hue EINFÜGEN
+![SmHoEzMa-Startmenü2](/images/.PNG)
+
+Werden nun die Einstellung eines hinzugefügten Gerätes ausgewählt so kommt man in ein Menü welches die Möglichkeit bietet eine Homecoming Funktion einzustellen. Diese ermöglicht es die Geräte spezifisch anzusteuern sobald sich das Telefon in deren Nähe befindet. 
+
+#####HIER BILD VON GERÄTe EInstellungen EINFÜGEN
+![SmHoEzMa-Geräte Einstellung](/images/.PNG)
+
+Wähltman das Hamburgermenü im Startbildschirm aus so werden verschiedene Funtkionen sichtbar wie den Sleepmode oder die Einstellung für die App. 
+Der Sleepmode ermöglicht es alle Geräte anzusteuern umd diese auszuschalten, sofern diese damit ansprechbar sind. 
+Die Auswahl Einstellung aus dem Startmenü ermöglicht es bisher Benachrichtigungen an- oder abzuschalten. 
+
+ 
+### Zukunftsausblicke von SmHoEzMa
+
+Als Erweiterung und als Ausblick auf Mobile Computing 2 wurden schon einige Überlegungen angestellt um die bisherige App zu verbessern. 
+
+Zum einen wird das Grundprinzip der Ansteurung der Geräte komplett über eine REST Schnittstelle geschehen. Somit muss nicht immer jedes Gerät für sich hinzugefügt werden, sondern nur noch der Server welcher die Verfügbaren Smartdevices kommuniziert. Dies ermöglicht es sämtlichen Netzwerkaufwand auf ein externes Gerät zu schieben und nur noch die Daten abzurufen wenn diese gebraucht werden. 
+
+Daraus ergibt es sich auch das die Logik innerhalb vom SmHoEzMa verändert werden muss damit die entsprechenden Antworten übersetzt werden können. 
+Außerdem bedeutet das eine Entwicklung eines Entsprechnd komplexen Backends welche neue Überlegungen benötigt um eine verbesserte Funktionalität zu bieten. Damit verbunden existiert auch die Idee das dieser Server kleinere Sensoren anteuert die tatsächliche Werte liefern kann und nicht wie bisher zufällig Werte generiert.
+
+Als andere Planung ist es vorgesehen, dass die gesamte GUI auf QML umgestellt wird. Diese bietet im Vergleich zu den bisherigen Qt Widgets mehr Komfort im Beriech der Android Entwicklung da die Widgets an sich eher für den Desktop gebrauch ausgelegt sind. 
+
+Es sind auch kleinere Funktionalitäten geplant wie Verläufe oder teilautomatische Ansteuerungen.
