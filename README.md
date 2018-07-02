@@ -55,4 +55,4 @@ Als Empfehlung für den IIS Express ist es zu raten das eine Erweiterung install
 
 ### Bedienung von SmHoEzMa 
 
-:clap:
+:clap: :100: :100: :100: :100:
