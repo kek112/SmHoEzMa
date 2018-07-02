@@ -19,7 +19,7 @@ Dieses Repository wird einfach runtergeladen und der darin enthaltene Emulator w
 Die Version V0.8 wurde in unserer App verwendet und war zu dem Entwicklungszeitpnkt die aktuellste Version.
 Nach dem Start der Software sollte dieses Bild angezeigt werden:
 
-![Emulator Startup](/images/Emulator_UI.png)
+![Emulator Startup](/images/Emulator_UI.PNG)
 
 In dieser Ansicht muss nur oben auf Start gedrückt werden um den Server zum laufen zu bekommen. 
 In diesem Emulator können noch zusätzliche Lampen hinzugefügt werden. In unserem Beispiel haben wir eine Lux Lampe erstellt. 
