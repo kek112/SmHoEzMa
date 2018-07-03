@@ -1,5 +1,6 @@
 #include "deviceview.h"
 #include "humiditysensor.h"
+#include "tempereratursensor.h"
 
 CDeviceView::CDeviceView(CDeviceStructure::Device _device, QWidget *parent)
     : QWidget(parent)
@@ -100,9 +101,9 @@ void CDeviceView::UpdateDevice(CDeviceStructure::Device _device)
     }
     case CDeviceStructure::TEMPERATURESENSOR:
     {
-        //Temperatur Klasse anlegen
+        CTempereraturSensor tempSensor(_device.m_DeviceNumber, _device.m_IpAddress.toString());
         m_pOutputDescriptionLabel->setText("Humidity:");
-        m_pOutputLabel->setText("%");
+        m_pOutputLabel->setText(QString::number(tempSensor.getTemperature()) + "%");
         break;
     }
     case CDeviceStructure::HUMIDITYSENSOR:

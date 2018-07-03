@@ -7,15 +7,7 @@
 #
 #       HIER EINFÜGEN
 #
-<<<<<<< HEAD
-<<<<<<< HEAD
-QT       += core gui network positioning xml testlib
-=======
-QT       += core gui network positioning xml quickwidgets
->>>>>>> Started AddDeviceView
-=======
 QT       += core gui network positioning xml testlib quickwidgets
->>>>>>> add deviceView Class, add custom Switch class, begin menu animation
 #
 #       HIER EINFÜGEN
 #
@@ -61,19 +53,9 @@ SOURCES += \
     intern/src/pingmodel.cpp \
     intern/src/androidsensor.cpp \
     intern/src/devicestructure.cpp \
-<<<<<<< HEAD
-<<<<<<< HEAD
-    intern/src/Philipscolor.cpp \
-    intern/src/PhilipsLux.cpp \
-=======
-    intern/src/phillips.cpp \
-    intern/src/phillipscolor.cpp \
-    intern/src/phillipsLux.cpp \
->>>>>>> fixed pro file, started working on popup menu
-=======
+    intern/src/philips.cpp \
     intern/src/philipscolor.cpp \
     intern/src/philipsLux.cpp \
->>>>>>> emergency commit
     intern/src/humiditysensor.cpp \
     intern/src/aboutview.cpp \
     intern/src/adddeviceview.cpp \
@@ -81,44 +63,22 @@ SOURCES += \
     intern/src/closemenueventfilter.cpp \
     intern/src/devicelistview.cpp \
     intern/src/mainview.cpp \
-<<<<<<< HEAD
     intern/src/menubar.cpp \
     intern/tests/tst_Philips.cpp \
-    intern/src/philips.cpp \
-<<<<<<< HEAD
-    intern/src/philips.cpp \
-    intern/src/tempereratursensor.cpp
-=======
-    intern/src/menubar.cpp
->>>>>>> fixed pro file, started working on popup menu
-=======
+    intern/src/tempereratursensor.cpp \
+    intern/src/menubar.cpp \
     intern/src/custombutton.cpp \
-<<<<<<< HEAD
-    intern/src/deviceview.cpp
->>>>>>> emergency commit
-=======
     intern/src/deviceview.cpp \
     intern/src/switchwidget.cpp
->>>>>>> add deviceView Class, add custom Switch class, begin menu animation
 
 HEADERS += \
         intern/src/mainwindow.h \
     intern/src/pingmodel.h \
     intern/src/androidsensor.h \
     intern/src/devicestructure.h \
-<<<<<<< HEAD
-<<<<<<< HEAD
-    intern/src/Philipscolor.h \
-    intern/src/PhilipsLux.h \
-=======
-    intern/src/phillips.h \
-    intern/src/phillipscolor.h \
-    intern/src/phillipsLux.h \
->>>>>>> fixed pro file, started working on popup menu
-=======
+    intern/src/philips.h \
     intern/src/philipscolor.h \
     intern/src/philipsLux.h \
->>>>>>> emergency commit
     intern/src/humiditysensor.h \
     intern/src/aboutview.h \
     intern/src/adddeviceview.h \
@@ -126,25 +86,13 @@ HEADERS += \
     intern/src/closemenueventfilter.h \
     intern/src/devicelistview.h \
     intern/src/mainview.h \
-<<<<<<< HEAD
     intern/src/menubar.h \
     intern/tests/tst_Philips.h \
-    intern/src/philips.h \
-<<<<<<< HEAD
-    intern/src/philips.h \
-    intern/src/tempereratursensor.h
-=======
-    intern/src/menubar.h
->>>>>>> fixed pro file, started working on popup menu
-=======
+    intern/src/tempereratursensor.h \
+    intern/src/menubar.h \
     intern/src/custombutton.h \
-<<<<<<< HEAD
-    intern/src/deviceview.h
->>>>>>> emergency commit
-=======
     intern/src/deviceview.h \
     intern/src/switchwidget.h
->>>>>>> add deviceView Class, add custom Switch class, begin menu animation
 
 include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)
