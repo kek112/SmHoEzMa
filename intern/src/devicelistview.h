@@ -4,6 +4,7 @@
 #include "adddeviceview.h"
 #include "custombutton.h"
 #include "devicestructure.h"
+#include "deviceview.h"
 
 #include <QGridLayout>
 #include <QLabel>
@@ -32,8 +33,8 @@ private:
     QGridLayout*    m_pDeviceListLayout;
 
     QToolBox*       m_pDeviceToolBox;
-    CCustomButton*    m_pAddDeviceButton;
-    CCustomButton*    m_pRemoveDeviceButton;
+    CCustomButton*  m_pAddDeviceButton;
+    CCustomButton*  m_pRemoveDeviceButton;
     CAddDeviceView* m_pAddDeviceView;
 
     CDeviceStructure* m_pDevices;

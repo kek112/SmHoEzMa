@@ -8,6 +8,7 @@
 
 #include <QApplication>
 #include <QDebug>
+#include <QPropertyAnimation>
 #include <QResizeEvent>
 #include <QStackedLayout>
 #include <QVBoxLayout>
@@ -45,6 +46,8 @@ private:
     CAboutView*         m_pAboutView;
 
     QVBoxLayout*        m_pMainLayout;
+
+    QPropertyAnimation* m_pAnimation;
 };
 
 #endif // MAINVIEW_H

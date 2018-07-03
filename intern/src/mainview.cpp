@@ -32,6 +32,9 @@ CMainView::CMainView(QWidget *parent) : QWidget(parent)
 
     qApp->installEventFilter(pEventFilter);
 
+    m_pAnimation = new QPropertyAnimation(m_pMenuBar, QByteArray("MenuMoveIn"));
+    m_pAnimation->setDuration(1000);
+
 
     connect(pEventFilter, SIGNAL(closeMenu()), this, SLOT(closeMenu()));
     connect(this, SIGNAL(sendIsMenuVisible(bool)), pEventFilter, SLOT(setIsMenuVisible(bool)));
@@ -59,8 +62,16 @@ void CMainView::triggerMenu()
 {
     QSize tempSize = qApp->activeWindow()->size();
     tempSize.setWidth(tempSize.width() * 0.7);
+
+    m_pMenuBar->move(0, -(tempSize.width()));
+
     m_pMenuBar->resize(tempSize);
     m_pMenuBar->raise();
+
+    m_pAnimation->setStartValue(QRect(0, -(tempSize.width()), tempSize.height(), tempSize.width()));
+    m_pAnimation->setEndValue(QRect(0, 0, tempSize.height(), tempSize.width()));
+
+    // TODO: Fix Menu Animation (QProperty Animation ändert eine Variable --> muss das Objekt angeben das die Property hat und Property Namen angeben)
 
     openMenu();
 
@@ -68,6 +79,11 @@ void CMainView::triggerMenu()
 
 void CMainView::closeMenu(bool _sendSignal)
 {
+    m_pAnimation->setStartValue(QRect(0, 0, m_pMenuBar->height(), m_pMenuBar->width()));
+    m_pAnimation->setEndValue(QRect(0, -(m_pMenuBar->width()), m_pMenuBar->height(), m_pMenuBar->width()));
+
+    m_pAnimation->start();
+
     m_pMenuBar->hide();
     if(_sendSignal)
     {
@@ -78,6 +94,9 @@ void CMainView::closeMenu(bool _sendSignal)
 void CMainView::openMenu()
 {
     m_pMenuBar->show();
+
+    m_pAnimation->start();
+
     emit sendIsMenuVisible(true);
 }
 

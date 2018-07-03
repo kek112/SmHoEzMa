@@ -7,5 +7,6 @@
         <file>PanelItem.qml</file>
         <file>Accordion.qml</file>
         <file>AccordionElement.qml</file>
+        <file>SwitchWidget.qml</file>
     </qresource>
 </RCC>

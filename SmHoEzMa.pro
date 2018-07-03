@@ -8,10 +8,14 @@
 #       HIER EINFÜGEN
 #
 <<<<<<< HEAD
+<<<<<<< HEAD
 QT       += core gui network positioning xml testlib
 =======
 QT       += core gui network positioning xml quickwidgets
 >>>>>>> Started AddDeviceView
+=======
+QT       += core gui network positioning xml testlib quickwidgets
+>>>>>>> add deviceView Class, add custom Switch class, begin menu animation
 #
 #       HIER EINFÜGEN
 #
@@ -89,8 +93,13 @@ SOURCES += \
 >>>>>>> fixed pro file, started working on popup menu
 =======
     intern/src/custombutton.cpp \
+<<<<<<< HEAD
     intern/src/deviceview.cpp
 >>>>>>> emergency commit
+=======
+    intern/src/deviceview.cpp \
+    intern/src/switchwidget.cpp
+>>>>>>> add deviceView Class, add custom Switch class, begin menu animation
 
 HEADERS += \
         intern/src/mainwindow.h \
@@ -129,8 +138,13 @@ HEADERS += \
 >>>>>>> fixed pro file, started working on popup menu
 =======
     intern/src/custombutton.h \
+<<<<<<< HEAD
     intern/src/deviceview.h
 >>>>>>> emergency commit
+=======
+    intern/src/deviceview.h \
+    intern/src/switchwidget.h
+>>>>>>> add deviceView Class, add custom Switch class, begin menu animation
 
 include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)

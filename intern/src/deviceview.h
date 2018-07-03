@@ -2,9 +2,14 @@
 #define DEVICEVIEW_H
 
 #include "devicestructure.h"
+#include "switchwidget.h"
 
+#include <QGridLayout>
 #include <QLabel>
+#include <QSlider>
 #include <QWidget>
+#include <QQuickWidget>
+#include <QQuickItem>
 
 class CDeviceView : public QWidget
 {
@@ -21,7 +26,25 @@ public slots:
 private:
     CDeviceStructure::Device m_Device;
 
-    QLabel* m_pLabel; //TODO: kann ich Label Nutzung kombinieren? (Für Temperatur + Humidity)
+    QGridLayout*    m_pMainLayout;
+
+    QLabel*         m_pOutputDescriptionLabel;
+    QLabel*         m_pOutputLabel;
+
+    QLabel*         m_pBrightnessDescriptionLabel;
+    QSlider*        m_pBrightnessSlider;
+
+    QLabel*         m_pSaturationDescriptionLabel;
+    QSlider*        m_pSaturationSlider;
+
+    QLabel*         m_pOnOffDescriptionLabel;
+
+    QLabel*         m_pColorDescriptionLabel;
+
+    QObject*        m_pSwitchObject;
+//    QQmlEngine      m_Engine;
+//    QQmlComponent*  m_Component;
+    //ColorDialog
 };
 
 #endif // DEVICEVIEW_H
