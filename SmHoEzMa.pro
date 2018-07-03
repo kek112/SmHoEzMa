@@ -7,7 +7,7 @@
 #
 #       HIER EINFÜGEN
 #
-QT       += core gui network positioning xml testlib
+QT       += core gui network positioning xml testlib quickwidgets
 #
 #       HIER EINFÜGEN
 #
@@ -66,7 +66,8 @@ SOURCES += \
     intern/tests/tst_Philips.cpp \
     intern/src/philips.cpp \
     intern/src/custombutton.cpp \
-    intern/src/deviceview.cpp
+    intern/src/deviceview.cpp \
+    intern/src/switchwidget.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
@@ -86,10 +87,12 @@ HEADERS += \
     intern/tests/tst_Philips.h \
     intern/src/philips.h \
     intern/src/custombutton.h \
-    intern/src/deviceview.h
+    intern/src/deviceview.h \
+    intern/src/switchwidget.h
 
 include(Project_Compile_Settings_Sahm.pri)
 #include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)
 
 RESOURCES += \
-    intern/assets/icons/icons.qrc
+    intern/assets/icons/icons.qrc \
+    intern/src/qml.qrc
