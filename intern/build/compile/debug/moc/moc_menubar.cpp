@@ -1,11 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'menubar.h'
 **
-<<<<<<< HEAD
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.11.0)
-=======
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.11.1)
->>>>>>> add deviceView Class, add custom Switch class, begin menu animation
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -16,11 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'menubar.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-<<<<<<< HEAD
-#error "This file was generated using the moc from 5.11.0. It"
-=======
 #error "This file was generated using the moc from 5.11.1. It"
->>>>>>> add deviceView Class, add custom Switch class, begin menu animation
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -100,15 +92,6 @@ void CMenuBar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 3: _t->priavteButtonPressed((*reinterpret_cast< QAbstractButton*(*)>(_a[1]))); break;
         default: ;
         }
-<<<<<<< HEAD
-    } else if (_c == QMetaObject::IndexOfMethod) {
-        int *result = reinterpret_cast<int *>(_a[0]);
-        {
-            using _t = void (CMenuBar::*)(int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CMenuBar::ButtonPressed)) {
-                *result = 0;
-                return;
-=======
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
@@ -117,7 +100,6 @@ void CMenuBar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QAbstractButton* >(); break;
->>>>>>> Started AddDeviceView
             }
             break;
         }

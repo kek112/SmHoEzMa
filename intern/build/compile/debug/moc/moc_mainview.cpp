@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CMainView_t {
-    QByteArrayData data[11];
-    char stringdata0[114];
+    QByteArrayData data[12];
+    char stringdata0[128];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,13 +41,14 @@ QT_MOC_LITERAL(6, 60, 11), // "_sendSignal"
 QT_MOC_LITERAL(7, 72, 8), // "openMenu"
 QT_MOC_LITERAL(8, 81, 11), // "ShowDevices"
 QT_MOC_LITERAL(9, 93, 9), // "ShowAbout"
-QT_MOC_LITERAL(10, 103, 10) // "SleepModus"
+QT_MOC_LITERAL(10, 103, 10), // "SleepModus"
+QT_MOC_LITERAL(11, 114, 13) // "MenuXPosition"
 
     },
     "CMainView\0sendIsMenuVisible\0\0_visible\0"
     "triggerMenu\0closeMenu\0_sendSignal\0"
     "openMenu\0ShowDevices\0ShowAbout\0"
-    "SleepModus"
+    "SleepModus\0MenuXPosition"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +59,7 @@ static const uint qt_meta_data_CMainView[] = {
        0,       // classname
        0,    0, // classinfo
        8,   14, // methods
-       0,    0, // properties
+       1,   66, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -87,6 +88,9 @@ static const uint qt_meta_data_CMainView[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+
+ // properties: name, type, flags
+      11, QMetaType::Int, 0x00095103,
 
        0        // eod
 };
@@ -117,6 +121,26 @@ void CMainView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             }
         }
     }
+#ifndef QT_NO_PROPERTIES
+    else if (_c == QMetaObject::ReadProperty) {
+        CMainView *_t = static_cast<CMainView *>(_o);
+        Q_UNUSED(_t)
+        void *_v = _a[0];
+        switch (_id) {
+        case 0: *reinterpret_cast< int*>(_v) = _t->MenuXPosition(); break;
+        default: break;
+        }
+    } else if (_c == QMetaObject::WriteProperty) {
+        CMainView *_t = static_cast<CMainView *>(_o);
+        Q_UNUSED(_t)
+        void *_v = _a[0];
+        switch (_id) {
+        case 0: _t->setMenuXPosition(*reinterpret_cast< int*>(_v)); break;
+        default: break;
+        }
+    } else if (_c == QMetaObject::ResetProperty) {
+    }
+#endif // QT_NO_PROPERTIES
 }
 
 QT_INIT_METAOBJECT const QMetaObject CMainView::staticMetaObject = {
@@ -152,6 +176,23 @@ int CMainView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
             *reinterpret_cast<int*>(_a[0]) = -1;
         _id -= 8;
     }
+#ifndef QT_NO_PROPERTIES
+   else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
+            || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
+        qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyDesignable) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyScriptable) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyStored) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyEditable) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyUser) {
+        _id -= 1;
+    }
+#endif // QT_NO_PROPERTIES
     return _id;
 }
 

@@ -15,7 +15,6 @@ public:
                          int    _saturation,
                          int    _lampnumber,
                          QString _ip);
-    ~CPhilips();
 
     void        switchOn();
     void        switchOff();
@@ -23,7 +22,6 @@ public:
     void        setSaturation(int _saturation);
     QString     callBridge(QJsonDocument _body);
     QString     callBridge();
-    //TODO
 
     bool        getOnOffState();
     int         getBrightness();
@@ -32,6 +30,12 @@ public:
     QString     getAPICall() const;
 
     void        setStates();
+
+    QString getIp() const;
+    void setIp(const QString &ip);
+
+    int getLampNumber() const;
+    void setLampNumber(int lampNumber);
 
 private:
     QNetworkAccessManager   manager;
@@ -55,6 +59,7 @@ private:
 
 private:
     void        updateAPICall();
+    void        updateValues();
 
 private slots:
     void        waitForReply();

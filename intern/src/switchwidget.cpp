@@ -11,6 +11,7 @@ CSwitchWidget::CSwitchWidget(QWidget *parent)
 {
     setOffset(0);
     setBrush(QColor("#009688"));
+    setCheckable(true);
 }
 
 CSwitchWidget::CSwitchWidget(const QBrush &brush, QWidget *parent)
@@ -24,6 +25,7 @@ CSwitchWidget::CSwitchWidget(const QBrush &brush, QWidget *parent)
 {
     setOffset(0);
     setBrush(brush);
+    setCheckable(true);
 }
 
 void CSwitchWidget::paintEvent(QPaintEvent *e)
@@ -65,7 +67,7 @@ void CSwitchWidget::mouseReleaseEvent(QMouseEvent *e)
 {
     if (e->button() & Qt::LeftButton)
     {
-        _switch = _switch ? false : true;
+        _switch = !_switch ;
         _thumb = _switch ? _brush : QBrush("#d5d5d5");
 
         if (_switch)
@@ -111,4 +113,34 @@ void CSwitchWidget::setOffset(int o)
 {
     _x = o;
     update();
+}
+
+void CSwitchWidget::setChecked(bool _checked)
+{
+    if(_checked != _switch)
+    {
+        _switch = _checked;
+        _thumb = _switch ? _brush : QBrush("#d5d5d5");
+
+        if (_switch)
+        {
+            _anim->setStartValue(0);
+            _anim->setEndValue(width() - height());
+            _anim->setDuration(120);
+            _anim->start();
+        }
+        else
+        {
+            _anim->setStartValue(width() - height());
+            _anim->setEndValue(0);
+            _anim->setDuration(120);
+            _anim->start();
+        }
+        QAbstractButton::setChecked(_checked);
+    }
+}
+
+bool CSwitchWidget::isChecked()
+{
+    return QAbstractButton::isChecked();
 }

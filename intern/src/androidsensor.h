@@ -10,12 +10,16 @@ class CAndroidSensor : QObject
 public:
     CAndroidSensor(QObject *parent = 0);
 
+    QGeoCoordinate getGPSLocation();
+
 private slots:
     void positionUpdated(const QGeoPositionInfo &info);
     void setGPSLocation(QGeoPositionInfo geoPositionInfo);
 
 private:
     QGeoPositionInfoSource* locationInfo_;
+
+    QGeoCoordinate m_Coordinates;
 };
 
 #endif // ANDROIDSENSOR_H

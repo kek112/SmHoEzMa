@@ -19,7 +19,7 @@ public:
 signals:
     void DeviceButtonPressed();
     void AboutButtonPressed();
-    void SleepButtonPressed();
+    void SleepButtonPressed(); //TODO: Sleep function
 
 private slots:
     void priavteButtonPressed(QAbstractButton *_pressedButton);
@@ -28,12 +28,12 @@ protected:
     void resizeEvent(QResizeEvent* _event);
 
 private:
-    QPixmap          m_Image;
+    QPixmap         m_Image;
 
     QLabel*         m_pImageLabel;
-    CCustomButton*    m_pDevicesButton;
-    CCustomButton*    m_pAboutButton;
-    CCustomButton*    m_pSleepButton;
+    CCustomButton*  m_pDevicesButton;
+    CCustomButton*  m_pAboutButton;
+    CCustomButton*  m_pSleepButton;
 
     QVBoxLayout*    m_pMainLayout;
 };

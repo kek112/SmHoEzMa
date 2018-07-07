@@ -7,7 +7,7 @@
 #
 #       HIER EINFÜGEN
 #
-QT       += core gui network positioning xml testlib quickwidgets
+QT       += core gui network positioning xml testlib qml quickwidgets
 #
 #       HIER EINFÜGEN
 #
@@ -66,10 +66,11 @@ SOURCES += \
     intern/src/menubar.cpp \
     intern/tests/tst_Philips.cpp \
     intern/src/tempereratursensor.cpp \
-    intern/src/menubar.cpp \
     intern/src/custombutton.cpp \
     intern/src/deviceview.cpp \
-    intern/src/switchwidget.cpp
+    intern/src/switchwidget.cpp \
+    intern/src/mapthread.cpp \
+    intern/src/customcolordialog.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
@@ -89,14 +90,15 @@ HEADERS += \
     intern/src/menubar.h \
     intern/tests/tst_Philips.h \
     intern/src/tempereratursensor.h \
-    intern/src/menubar.h \
     intern/src/custombutton.h \
     intern/src/deviceview.h \
-    intern/src/switchwidget.h
+    intern/src/switchwidget.h \
+    intern/src/mapthread.h \
+    intern/src/customcolordialog.h
 
 include(Project_Compile_Settings_Sahm.pri)
-#include(C:\Users\Tobias\Documents\Development\C++\SmHoEzMa\extern\qt-material-widgets\components\components.pri)
+
 
 RESOURCES += \
     intern/assets/icons/icons.qrc \
-    intern/src/qml.qrc
+    intern/qml/qml.qrc

@@ -1,5 +1,7 @@
 #include "devicelistview.h"
 
+#include "philips.h"
+
 CDeviceListView::CDeviceListView(QWidget *parent) : QWidget(parent)
 {
     m_pDevices = new CDeviceStructure();
@@ -30,6 +32,15 @@ CDeviceListView::CDeviceListView(QWidget *parent) : QWidget(parent)
     m_pMainStackLayout->addWidget(deviceListWidget);
     m_pMainStackLayout->addWidget(m_pAddDeviceView);
 
+//    m_pMapThread = new CMapThread(m_pDevices);
+//    m_pMapThread->moveToThread(&m_WorkerThread);
+//    connect(&m_WorkerThread,    &QThread::finished,             m_pMapThread,   &QObject::deleteLater);
+//    connect(this,               &CDeviceListView::startThread,  m_pMapThread,   &CMapThread::checkGPS);
+//    connect(m_pMapThread,       &CMapThread::reachedHome,       this,           &CDeviceListView::ReachedHome);
+
+//    m_WorkerThread.start();
+//    emit startThread();
+
     setLayout(m_pMainStackLayout);
 
     connect(m_pAddDeviceButton,     SIGNAL(clicked(bool)),  this, SLOT(OpenAddDevice()));
@@ -58,9 +69,15 @@ void CDeviceListView::CancelAddDevice()
 
 void CDeviceListView::AddDevice(CDeviceStructure::Device _toAdd)
 {
-    m_pDevices->addDevices(_toAdd.m_Name, _toAdd.m_IpAddress, _toAdd.m_MacAddress, _toAdd.m_DeviceType, _toAdd.m_DeviceNumber);
+    m_pDevices->addDevices(_toAdd.m_Name, _toAdd.m_IpAddress, _toAdd.m_MacAddress, _toAdd.m_DeviceType, _toAdd.m_DeviceNumber, false, _toAdd.m_Coordinate);
     m_pMainStackLayout->setCurrentIndex(0);
-    m_pDeviceToolBox->addItem(new CDeviceView(_toAdd), _toAdd.m_Name); //TODO: One Widget that gets constructed based on deviceType
+    m_pDeviceToolBox->addItem(new CDeviceView(_toAdd), _toAdd.m_Name);
+}
+
+void CDeviceListView::ReachedHome(int _device)
+{
+    CDeviceView* deviceView = static_cast<CDeviceView*>(m_pDeviceToolBox->widget(_device));
+    deviceView->ReachedHome();
 }
 
 void CDeviceListView::LoadDeviceList()

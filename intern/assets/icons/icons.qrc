@@ -8,5 +8,7 @@
         <file alias="backIcon">baseline_arrow_back_black_48.png</file>
         <file alias="menuIcon">baseline_menu_black_48.png</file>
         <file alias="removeIcon">baseline_remove_black_48.png</file>
+        <file>marker.png</file>
+        <file alias="ColorSpectrum">2000px-HueScale.png</file>
     </qresource>
 </RCC>

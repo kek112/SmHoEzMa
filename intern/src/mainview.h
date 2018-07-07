@@ -17,8 +17,13 @@
 class CMainView : public QWidget
 {
     Q_OBJECT
+    Q_PROPERTY(int MenuXPosition READ MenuXPosition WRITE setMenuXPosition)
+
 public:
     explicit CMainView(QWidget *parent = nullptr);
+
+    int MenuXPosition() const;
+    void setMenuXPosition(int MenuXPosition);
 
 signals:
     void sendIsMenuVisible(bool _visible);
@@ -37,6 +42,8 @@ private slots:
     void SleepModus();
 
 private:
+    int m_MenuXPosition;
+
     CAppHeader*         m_pAppHeader;
     QStackedLayout*     m_pMainWidgetStack;
 

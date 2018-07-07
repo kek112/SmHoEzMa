@@ -1,15 +1,17 @@
 #ifndef TEMPERERATURSENSOR_H
 #define TEMPERERATURSENSOR_H
 
+#include <QObject>
+#include <QNetworkReply>
 
-class CTempereraturSensor : public QObject
+class CTemperatureSensor : public QObject
 {
     Q_OBJECT
 public:
     ////
     /// sensordaten in pushdown menü
     ///
-    CTempereraturSensor(int    _sensorNumber,
+    CTemperatureSensor(int    _sensorNumber,
                     QString _ip);
 
 public:

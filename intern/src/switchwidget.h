@@ -22,6 +22,9 @@ public:
     int offset() const;
     void setOffset(int o);
 
+    void setChecked(bool _checked);
+    bool isChecked();
+
 protected:
     void paintEvent(QPaintEvent*) override;
     void mouseReleaseEvent(QMouseEvent*) override;

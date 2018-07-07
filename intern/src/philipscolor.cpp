@@ -23,7 +23,8 @@ CPhilipsColor::CPhilipsColor(QObject *parent,
                                                  _lampnumber,
                                                  _ip)
 {
-    m_hueValue=_hueValue;
+    m_hueValue = _hueValue;
+    setHueValue(m_hueValue);
 }
 
 void CPhilipsColor::setHueValue(int _huevalue)
