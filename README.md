@@ -92,4 +92,4 @@ Außerdem bedeutet das eine Entwicklung eines Entsprechnd komplexen Backends wel
 
 Als andere Planung ist es vorgesehen, dass die gesamte GUI auf QML umgestellt wird. Diese bietet im Vergleich zu den bisherigen Qt Widgets mehr Komfort im Beriech der Android Entwicklung da die Widgets an sich eher für den Desktop gebrauch ausgelegt sind. 
 
-Es sind auch kleinere Funktionalitäten geplant wie Verläufe oder teilautomatische Ansteuerungen.
+Es sind auch kleinere Funktionalitäten geplant wie die Anzeige von Graphen für bisherige Verläufe oder teilautomatische Ansteuerungen unter bestimmten Voraussetzungen.
