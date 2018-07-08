@@ -33,6 +33,7 @@ public slots:
     void SettingsChanged();
     void UpdatePosition();
     void OpenColorDialog();
+    void SleepDevice();
 
 private:
     CDeviceStructure::Device m_Device;

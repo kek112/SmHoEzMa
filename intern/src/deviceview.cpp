@@ -239,3 +239,12 @@ void CDeviceView::OpenColorDialog()
 
     SettingsChanged();
 }
+
+void CDeviceView::SleepDevice()
+{
+    if(CDeviceStructure::PHILIPLSLUXLAMP == m_Device.m_DeviceType || CDeviceStructure::PHILIPLSCLOLORLAMP == m_Device.m_DeviceType)
+    {
+        m_pSwitchWidget->setChecked(false);
+        SettingsChanged();
+    }
+}

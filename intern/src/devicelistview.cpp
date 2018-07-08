@@ -50,6 +50,15 @@ CDeviceListView::CDeviceListView(QWidget *parent) : QWidget(parent)
     connect(m_pAddDeviceView,       SIGNAL(sendDevice(CDeviceStructure::Device)), this, SLOT(AddDevice(CDeviceStructure::Device)));
 }
 
+void CDeviceListView::SleepDevices()
+{
+    for(int i = 0; i < m_pDeviceToolBox->count(); i++)
+    {
+        CDeviceView* deviceView = static_cast<CDeviceView*>(m_pDeviceToolBox->widget(i));
+        deviceView->SleepDevice();
+    }
+}
+
 void CDeviceListView::OpenAddDevice()
 {
     m_pMainStackLayout->setCurrentIndex(1);

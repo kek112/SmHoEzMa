@@ -42,6 +42,7 @@ CMainView::CMainView(QWidget *parent) : QWidget(parent)
 
     connect(m_pMenuBar, SIGNAL(AboutButtonPressed()), this, SLOT(ShowAbout()));
     connect(m_pMenuBar, SIGNAL(DeviceButtonPressed()), this, SLOT(ShowDevices()));
+    connect(m_pMenuBar, SIGNAL(SleepButtonPressed()), this, SLOT(SleepModus()));
 }
 
 void CMainView::resizeEvent(QResizeEvent *_event)
@@ -109,7 +110,7 @@ void CMainView::ShowAbout()
 
 void CMainView::SleepModus()
 {
-    //turn off all Devices
+    m_pDeviceView->SleepDevices();
     closeMenu(true);
 }
 

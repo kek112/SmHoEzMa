@@ -19,7 +19,7 @@ public:
 signals:
     void DeviceButtonPressed();
     void AboutButtonPressed();
-    void SleepButtonPressed(); //TODO: Sleep function
+    void SleepButtonPressed();
 
 private slots:
     void priavteButtonPressed(QAbstractButton *_pressedButton);

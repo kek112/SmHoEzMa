@@ -22,6 +22,9 @@ public:
 signals:
     void startThread();
 
+public slots:
+    void SleepDevices();
+
 private slots:
     void OpenAddDevice();
     void RemoveDevice();
