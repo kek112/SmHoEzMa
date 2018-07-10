@@ -45,11 +45,11 @@ Als Empfehlung für den IIS Express ist es zu raten das eine Erweiterung install
 
 ### Kurze Zusammenfassung
 1. Hue-Emulator starten
-    1.1 Software starten
-    1.2 Emulator über Start in der oberen Leiste starten 
+1.1 Software starten
+1.2 Emulator über Start in der oberen Leiste starten 
 2. ASP.Net Emulator starten
-    2.1 Dateien in IIS legen und Start
-    2.2 IIS Express über Visual Studio starten mit Erweiterung für Netzwerkweite Kommunikation 
+2.1 Dateien in IIS legen und Start
+2.2 IIS Express über Visual Studio starten mit Erweiterung für Netzwerkweite Kommunikation 
 3. SmHoEzMa starten 
 
 
