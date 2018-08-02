@@ -1,6 +1,4 @@
 #include "deviceview.h"
-#include "humiditysensor.h"
-#include "tempereratursensor.h"
 
 #include <QDebug>
 #include <QQuickView>
@@ -14,6 +12,8 @@ CDeviceView::CDeviceView(CDeviceStructure::Device _device, QWidget *parent)
     m_pColorLamp = nullptr;
     m_pLuxLamp = nullptr;
     m_pHomecomingLamp = nullptr;
+    m_pHumiditySensor = nullptr;
+    m_pTemperatureSensor = nullptr;
 
     switch(m_Device.m_DeviceType)
     {
@@ -36,27 +36,32 @@ CDeviceView::CDeviceView(CDeviceStructure::Device _device, QWidget *parent)
         m_pSwitchWidget->setMinimumHeight(64);
         m_pSwitchWidget->setMinimumWidth(128);
 
-//        m_pMapWidget = new QQuickWidget;
+//        m_pMapWidget = new QQuickWidget();
+
+//        connect(m_pMapWidget, &QQuickWidget::statusChanged, this, &CDeviceView::QuickWidgetStatusChanged);
+
 //        m_pMapWidget->setSource(QUrl("qrc:/map.qml"));
-//        auto *view = new QQuickView;
-//        auto *context = view->rootContext();
-//        view->setSource(QUrl("qrc:/map.qml"));
-//        QWidget *container = QWidget::createWindowContainer(view, this);
-//        container->show();
+//        m_pMapWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+//        m_pMapWidget->setMinimumHeight(200);
+//        m_pMapWidget->show();
 
-//        auto *view = new QQuickView;
-//        view->setSource(QUrl("qrc:/AndroidColorPicker.qml"));
-//        m_pColorDialog = QWidget::createWindowContainer(view, this);
-//        m_pColorDialog->hide();
+        qApp->setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
 
+        m_pHomeComingOnOffLabel = new QLabel("Homecoming", this);
+        m_pHomeComingOnOffSwitch = new CSwitchWidget(this);
+        m_pHomeComingSetButton = new CCustomButton("Set Destination", this);
 
-//        m_pOpenColorDialog = new CCustomButton("Color", this);
+        m_pMapView = new QQuickView();
+        m_pMapView->setSource(QUrl("qrc:/map.qml"));
+        m_pMapView->setResizeMode(QQuickView::SizeRootObjectToView);
+        m_pMapView->hide();
+        m_pMapView->close();
+        QWidget *MapContainer = QWidget::createWindowContainer(m_pMapView, this);
+        MapContainer->show();
+        MapContainer->resize(200, 200);
 
-//        QPalette pal = m_pOpenColorDialogButton->palette();
-//        pal.setColor(QPalette::Button, QColor(Qt::blue));
-//        m_pOpenColorDialogButton->setAutoFillBackground(true);
-//        m_pOpenColorDialogButton->setPalette(pal);
-//        m_pOpenColorDialogButton->update();
+//        m_pMapView = new CMapView(this);
+//        m_pMapView->lower();
 
         m_pHueSlider = new QSlider(Qt::Horizontal, this);
         m_pHueSlider->setMinimum(0);
@@ -80,15 +85,22 @@ CDeviceView::CDeviceView(CDeviceStructure::Device _device, QWidget *parent)
         m_pMainLayout->addWidget(m_pSwitchWidget,       3,1, Qt::AlignRight);
 
         //TODO: finish map (add set button & on/off switch)
-//        m_pMainLayout->addWidget(container,          5,0, 1,2);
+//        m_pMainLayout->addWidget(m_pMapWidget,              5,0, 1,2);
+        m_pMainLayout->addWidget(MapContainer,              5,0, 1,2);
+//        m_pMainLayout->addWidget(m_pMapView,                5,0, 1,2);
+        m_pMainLayout->addWidget(m_pHomeComingOnOffLabel,   6,0);
+        m_pMainLayout->addWidget(m_pHomeComingOnOffSwitch,  6,1);
+        m_pMainLayout->addWidget(m_pHomeComingSetButton,    7,0, 1,2);
 
 
         connect(m_pSaturationSlider,    &QSlider::sliderReleased,   this, &CDeviceView::SettingsChanged);
         connect(m_pBrightnessSlider,    &QSlider::sliderReleased,   this, &CDeviceView::SettingsChanged);
         connect(m_pSwitchWidget,        &CSwitchWidget::released,   this, &CDeviceView::SettingsChanged);
         connect(m_pHueSlider,           &QSlider::sliderReleased,   this, &CDeviceView::SettingsChanged);
-//        connect(m_pOpenColorDialogButton,   &QPushButton::clicked,      this, &CDeviceView::OpenColorDialog);
 
+        connect(m_pHomeComingSetButton, &QPushButton::clicked,      this, &CDeviceView::DebugMap);
+
+//        qApp->processEvents(QEventLoop::AllEvents | QEventLoop::WaitForMoreEvents);
 
         break;
     }
@@ -130,7 +142,9 @@ CDeviceView::CDeviceView(CDeviceStructure::Device _device, QWidget *parent)
     }
     case CDeviceStructure::TEMPERATURESENSOR:
     {
-        // NO BREAK --> uses same structure as Humidity
+        /**********************************************
+        * NO BREAK --> uses same structure as Humidity
+        **********************************************/
     }
     case CDeviceStructure::HUMIDITYSENSOR:
     {
@@ -171,9 +185,18 @@ void CDeviceView::SettingsChanged()
     if(m_pLuxLamp != nullptr)
     {
         delete m_pLuxLamp;
-    }if(m_pColorLamp != nullptr)
+    }
+    if(m_pColorLamp != nullptr)
     {
-        delete m_pLuxLamp;
+        delete m_pColorLamp;
+    }
+    if(m_pHumiditySensor != nullptr)
+    {
+        delete m_pHumiditySensor;
+    }
+    if(m_pTemperatureSensor != nullptr)
+    {
+        delete m_pTemperatureSensor;
     }
 
     switch(m_Device.m_DeviceType)
@@ -203,16 +226,16 @@ void CDeviceView::SettingsChanged()
     }
     case CDeviceStructure::TEMPERATURESENSOR:
     {
-        CTemperatureSensor tempSensor(m_Device.m_DeviceNumber, m_Device.m_IpAddress.toString());
-        m_pOutputDescriptionLabel->setText("Humidity:");
-        m_pOutputLabel->setText(QString::number(tempSensor.getTemperature()) + "%");
+        m_pTemperatureSensor = new CTemperatureSensor(m_Device.m_DeviceNumber, m_Device.m_IpAddress.toString());
+        m_pOutputDescriptionLabel->setText("Temperatur:");
+        m_pOutputLabel->setText(QString::number(m_pTemperatureSensor->getTemperature()) + "°C");
         break;
     }
     case CDeviceStructure::HUMIDITYSENSOR:
     {
-        CHumiditySensor humiditysensor(m_Device.m_DeviceNumber, m_Device.m_IpAddress.toString());
-        m_pOutputDescriptionLabel->setText("Temperatur:");
-        m_pOutputLabel->setText(QString::number(humiditysensor.getHumidity()) + " °C");
+        m_pHumiditySensor = new CHumiditySensor(m_Device.m_DeviceNumber, m_Device.m_IpAddress.toString());
+        m_pOutputDescriptionLabel->setText("Humidity:");
+        m_pOutputLabel->setText(QString::number(m_pHumiditySensor->getHumidity()) + "%");
         break;
     }
     }
@@ -246,5 +269,17 @@ void CDeviceView::SleepDevice()
     {
         m_pSwitchWidget->setChecked(false);
         SettingsChanged();
+    }
+}
+
+void CDeviceView::QuickWidgetStatusChanged(QQuickWidget::Status _status)
+{
+    qDebug() << "STATUS -> " << _status;
+    if (_status == QQuickWidget::Error) {
+        qDebug() << "ERROR -> " << m_pMapWidget->errors();
+    }
+
+    if (_status == QQuickWidget::Ready) {
+        qDebug() << "IM READY TO LOAD";
     }
 }

@@ -70,7 +70,8 @@ SOURCES += \
     intern/src/deviceview.cpp \
     intern/src/switchwidget.cpp \
     intern/src/mapthread.cpp \
-    intern/src/customcolordialog.cpp
+    intern/src/customcolordialog.cpp \
+    intern/src/mapview.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
@@ -94,7 +95,8 @@ HEADERS += \
     intern/src/deviceview.h \
     intern/src/switchwidget.h \
     intern/src/mapthread.h \
-    intern/src/customcolordialog.h
+    intern/src/customcolordialog.h \
+    intern/src/mapview.h
 
 include(Project_Compile_Settings_Sahm.pri)
 
@@ -102,3 +104,21 @@ include(Project_Compile_Settings_Sahm.pri)
 RESOURCES += \
     intern/assets/icons/icons.qrc \
     intern/qml/qml.qrc
+
+DISTFILES += \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

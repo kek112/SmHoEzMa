@@ -80,7 +80,7 @@ void CDeviceListView::AddDevice(CDeviceStructure::Device _toAdd)
 {
     m_pDevices->addDevices(_toAdd.m_Name, _toAdd.m_IpAddress, _toAdd.m_MacAddress, _toAdd.m_DeviceType, _toAdd.m_DeviceNumber, false, _toAdd.m_Coordinate);
     m_pMainStackLayout->setCurrentIndex(0);
-    m_pDeviceToolBox->addItem(new CDeviceView(_toAdd), _toAdd.m_Name);
+    m_pDeviceToolBox->addItem(new CDeviceView(_toAdd, this), _toAdd.m_Name);
 }
 
 void CDeviceListView::ReachedHome(int _device)
@@ -89,11 +89,12 @@ void CDeviceListView::ReachedHome(int _device)
     deviceView->ReachedHome();
 }
 
+
 void CDeviceListView::LoadDeviceList()
 {
     for(auto& device: m_pDevices->returnDevices())
     {
-        m_pDeviceToolBox->addItem(new CDeviceView(device), device.m_Name);
+        m_pDeviceToolBox->addItem(new CDeviceView(device, this), device.m_Name);
     }
 }
 

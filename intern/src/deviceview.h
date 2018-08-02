@@ -3,16 +3,20 @@
 
 #include "custombutton.h"
 #include "devicestructure.h"
+#include "mapview.h"
 #include "switchwidget.h"
 
 #include "philipscolor.h"
 #include "philipsLux.h"
+#include "humiditysensor.h"
+#include "tempereratursensor.h"
 
 #include <QColorDialog>
 #include <QGridLayout>
 #include <QLabel>
 #include <QSlider>
 #include <QWidget>
+#include <QQmlEngine>
 #include <QQuickWidget>
 #include <QQuickItem>
 
@@ -26,6 +30,7 @@ public:
 
 signals:
     void DeviceChanged(CDeviceStructure::Device _device);
+    void DebugMap();
 
 public slots:
     void UpdateDevice(CDeviceStructure::Device _device);
@@ -34,6 +39,9 @@ public slots:
     void UpdatePosition();
     void OpenColorDialog();
     void SleepDevice();
+
+private slots:
+    void QuickWidgetStatusChanged(QQuickWidget::Status _status);
 
 private:
     CDeviceStructure::Device m_Device;
@@ -56,13 +64,24 @@ private:
     QSlider*        m_pHueSlider;
     CCustomButton*  m_pOpenColorDialogButton;
 
-//    QQuickWidget*   m_pMapWidget;
+    QQmlEngine*     m_pMapEngine;
+    QQuickWidget*   m_pMapWidget;
+    QQuickView*     m_pMapView;
+//    CMapView*       m_pMapView;
+
+
+    QLabel*         m_pHomeComingOnOffLabel;
+    CSwitchWidget*  m_pHomeComingOnOffSwitch;
+    CCustomButton*  m_pHomeComingSetButton;
 
     QWidget*        m_pColorDialog;
 
     CPhilipsColor*  m_pColorLamp;
     CPhilipsLux*    m_pLuxLamp;
     CPhilips*       m_pHomecomingLamp;
+
+    CHumiditySensor*        m_pHumiditySensor;
+    CTemperatureSensor*     m_pTemperatureSensor;
 
     int m_Hue;
 };

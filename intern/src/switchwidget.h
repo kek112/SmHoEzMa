@@ -3,7 +3,10 @@
 
 #include <QtWidgets>
 
-//Creates an Android like switch
+/**
+ * @brief The CSwitchWidget class
+ * @details Subclasses the QAbstractButton class to create a Android like switch
+ */
 
 class CSwitchWidget : public QAbstractButton
 {
