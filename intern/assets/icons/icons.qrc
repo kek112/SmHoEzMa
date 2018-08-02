@@ -1,9 +1,14 @@
 <RCC>
     <qresource prefix="/">
-        <file alias="add">baseline-add-24px.svg</file>
-        <file alias="back">baseline-arrow_back-24px.svg</file>
-        <file alias="menu">baseline-menu-24px.svg</file>
-        <file alias="remove">baseline-remove-24px.svg</file>
-        <file alias="menuImage">icon-smart-home-light-blue-1.png</file>
+        <file>icon-smart-home-light-blue-1.png</file>
+        <file alias="menuImage">router-smart-home-1.jpg</file>
+        <file alias="arrowDown">baseline-keyboard_arrow_down-24px.png</file>
+        <file alias="arrowUp">baseline-keyboard_arrow_up-24px.png</file>
+        <file alias="addIcon">baseline_add_black_48.png</file>
+        <file alias="backIcon">baseline_arrow_back_black_48.png</file>
+        <file alias="menuIcon">baseline_menu_black_48.png</file>
+        <file alias="removeIcon">baseline_remove_black_48.png</file>
+        <file>marker.png</file>
+        <file alias="ColorSpectrum">2000px-HueScale.png</file>
     </qresource>
 </RCC>

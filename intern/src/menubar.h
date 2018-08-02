@@ -1,9 +1,11 @@
 #ifndef MENUBAR_H
 #define MENUBAR_H
 
+#include "custombutton.h"
+
+#include <QButtonGroup>
 #include <QPixmap>
 #include <QLabel>
-#include <QPushButton>
 #include <QResizeEvent>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -15,24 +17,25 @@ public:
     explicit CMenuBar(QWidget *parent = nullptr);
 
 signals:
-    void ButtonPressed(int index);
     void DeviceButtonPressed();
+    void SettingsButtonPressed();
     void AboutButtonPressed();
     void SleepButtonPressed();
 
 private slots:
-    void priavteButtonPressed();
+    void priavteButtonPressed(QAbstractButton *_pressedButton);
 
 protected:
     void resizeEvent(QResizeEvent* _event);
 
 private:
-    QImage*         m_pImage;
+    QPixmap         m_Image;
 
     QLabel*         m_pImageLabel;
-    QPushButton*    m_pDevicesButton;
-    QPushButton*    m_pAboutButton;
-    QPushButton*    m_pSleepButton;
+    CCustomButton*  m_pDevicesButton;
+    CCustomButton*  m_pAboutButton;
+    CCustomButton*  m_pSleepButton;
+    CCustomButton*  m_pSettingsButton;
 
     QVBoxLayout*    m_pMainLayout;
 };

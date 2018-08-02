@@ -1,6 +1,6 @@
 #include "philips.h"
 
-
+#include <QApplication>
 #include <QNetworkAccessManager>
 #include <QJsonObject>
 #include <QJsonDocument>
@@ -49,17 +49,13 @@ CPhilips::CPhilips(QObject *parent,
     configurationObject.insert("on",        m_switchedOn);
     configurationObject.insert("bri",       m_brightness);
     configurationObject.insert("sat",       m_saturation);
-    configurationObject.insert("lampnumber",m_lampNumber);
+//    configurationObject.insert("lampnumber",m_lampNumber);
 
     QJsonDocument body(configurationObject);
 
     callBridge(body);
 }
 
-CPhilips::~CPhilips()
-{
-
-}
 
 ///
 /// \brief CPhilips::setBrightness
@@ -108,17 +104,22 @@ void CPhilips::switchOff()
 ///
 QString CPhilips::callBridge(QJsonDocument _body)
 {
-    //qDebug() << _body.toJson();
-    //qDebug() << m_APICall;
+//    qDebug() << _body.toJson();
+//    qDebug() << m_APICall;
     QUrl temp = QUrl(m_APICall);
     QNetworkRequest request(temp);
     request.setHeader(QNetworkRequest::ContentTypeHeader, QString("application/json"));
 
-    reply = manager.put(request, _body.toJson());
+    QString tempJson(_body.toJson());
+
+    //NOTE: reply must be delted by user (deleteLater should be used)
+    reply = manager.put(request, tempJson.toUtf8());
 
     connect(reply , SIGNAL(readyRead()) , this , SLOT(waitForReply()));
 
-    return m_replyMessage;
+//    qDebug() << reply->readAll();
+
+    return reply->readAll();
 }
 QString CPhilips::callBridge()
 {
@@ -134,14 +135,14 @@ QString CPhilips::callBridge()
 
 void CPhilips::setStates()
 {    
-    QJsonObject jsonAll = callBridge();
+    QJsonObject jsonAll = QJsonDocument::fromBinaryData(callBridge().toUtf8()).object();
 
     if(jsonAll.contains("state")   &&  jsonAll["state"].isObject())
     {
-        QJsonObject json            =  jsonAll["state"];
+        QJsonObject json            =  jsonAll["state"].toObject();
 
         if(json.contains("on")      &&  json["on"].isBool())
-            m_actualSwitchedOn      =   json["on"];
+            m_actualSwitchedOn      =   json["on"].toBool();
 
         if(json.contains("bri")     &&  json["bri"].isDouble())
             m_actualBrightness      =   json["bri"].toInt();
@@ -154,6 +155,30 @@ void CPhilips::setStates()
         throw("state couldnt be found in json, check the response");
     }
 
+}
+
+QString CPhilips::getIp() const
+{
+    return m_ip;
+}
+
+void CPhilips::setIp(const QString &ip)
+{
+    m_ip = ip;
+    updateAPICall();
+    updateValues();
+}
+
+int CPhilips::getLampNumber() const
+{
+    return m_lampNumber;
+}
+
+void CPhilips::setLampNumber(int lampNumber)
+{
+    m_lampNumber = lampNumber;
+    updateAPICall();
+    updateValues();
 }
 
 bool CPhilips::getOnOffState()
@@ -178,10 +203,14 @@ QString CPhilips::getAPICall() const
 
 void CPhilips::waitForReply()
 {
-    m_replyMessage= reply->readAll();
+    m_replyMessage = reply->readAll();
 }
 
 void CPhilips::updateAPICall()
 {
     m_APICall  = QString("http://")+m_ip+":8000/api/newdeveloper/lights/"+QString::number(m_lampNumber)+"/state";
+}
+
+void CPhilips::updateValues()
+{
 }

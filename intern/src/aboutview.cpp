@@ -7,7 +7,9 @@ CAboutView::CAboutView(QWidget *parent) : QWidget(parent)
                               "Created by\n"
                               " - Tobias Rieß\n"
                               " - Karl-Erik Kley\n"
-                              " - Martin Lesser\n", this);
+                              " - Martin Lesser\n\n"
+                              "App Icon by Pixelmeetup on Flaticon", this);
+    m_pTextField->setAlignment(Qt::AlignCenter);
 
     m_pMainLayout = new QHBoxLayout();
 

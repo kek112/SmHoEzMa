@@ -23,6 +23,11 @@ CDeviceStructure::CDeviceStructure()
     save();
 }
 
+CDeviceStructure::~CDeviceStructure()
+{
+    save();
+}
+
 
 ///todo program funtkion
 
@@ -59,6 +64,9 @@ bool CDeviceStructure::save()
         xmldevice.setAttribute(m_XmlMacAddressString,   tempdevice.m_MacAddress);
         xmldevice.setAttribute(m_XmlDeviceNumber,       tempdevice.m_DeviceNumber);
         xmldevice.setAttribute(m_XmlDeviceTypeString,   tempdevice.m_DeviceType);
+        xmldevice.setAttribute(m_XmlActive,             tempdevice.m_HomecomingActive ? 1 : 0);
+        xmldevice.setAttribute(m_XmlLatitude,           QString::number(tempdevice.m_Coordinate.latitude()));
+        xmldevice.setAttribute(m_XmlLongitude,          QString::number(tempdevice.m_Coordinate.longitude()));
 
         doc.appendChild(xmldevice);
     }
@@ -124,11 +132,13 @@ QList<CDeviceStructure::Device> CDeviceStructure::returnDevices()
 /// after check has failed it will return false otherwise
 /// new struct is added and true will be returned
 ///
-bool CDeviceStructure::addDevices(  QString       _Name,
-                                    QHostAddress  _IpAddress,
-                                    QString       _MacAddress,
-                                    EDevices      _DeviceType,
-                                    int           _DeviceNumber)
+bool CDeviceStructure::addDevices(QString           _Name,
+                                    QHostAddress    _IpAddress,
+                                    QString         _MacAddress,
+                                    EDevices        _DeviceType,
+                                    int             _DeviceNumber,
+                                    bool            _Active,
+                                    QGeoCoordinate  _Coordinate)
 {
     Device device;
 
@@ -136,7 +146,7 @@ bool CDeviceStructure::addDevices(  QString       _Name,
     if(!m_Devices.isEmpty())
     {
         //go through every device in the list to check for existing name
-        for (auto tempdevice : devicelist)
+        for (auto tempdevice : m_Devices)
         {
             if(tempdevice.m_Name == _Name)
             {
@@ -148,6 +158,8 @@ bool CDeviceStructure::addDevices(  QString       _Name,
         device.m_MacAddress     = _MacAddress;
         device.m_DeviceType     = _DeviceType;
         device.m_DeviceNumber   = _DeviceNumber;
+        device.m_HomecomingActive         = _Active;
+        device.m_Coordinate     = _Coordinate;
 
         m_Devices.append(device);
         return true;
@@ -158,12 +170,24 @@ bool CDeviceStructure::addDevices(  QString       _Name,
         device.m_MacAddress     = _MacAddress;
         device.m_DeviceType     = _DeviceType;
         device.m_DeviceNumber   = _DeviceNumber;
+        device.m_HomecomingActive         = _Active;
+        device.m_Coordinate     = _Coordinate;
 
-        m_Devices(device);
+        m_Devices.append(device);
         return true;
     }
 
 
+}
+
+bool CDeviceStructure::addDevices(CDeviceStructure::Device _device)
+{
+    m_Devices.append(_device);
+}
+
+void CDeviceStructure::ClearDevices()
+{
+    m_Devices.clear();
 }
 
 ///
@@ -179,7 +203,7 @@ bool CDeviceStructure::deleteDevice(QString _Name)
     if(!m_Devices.isEmpty())
     {
             //go through every device in the list to check for existing name
-        for (auto tempdevice : devicelist)
+        for (auto tempdevice : m_Devices)
         {
             cunter++;
             if(tempdevice.m_Name == _Name)
@@ -242,6 +266,8 @@ QList<CDeviceStructure::Device> CDeviceStructure::retrieveElements(QDomElement r
             device.m_MacAddress     = e.attribute(m_XmlMacAddressString);
             device.m_DeviceType     = static_cast<EDevices>(e.attribute(m_XmlDeviceTypeString).toInt());
             device.m_DeviceNumber   = e.attribute(m_XmlDeviceNumber).toInt();
+            device.m_HomecomingActive         = e.attribute(m_XmlActive) == 0 ? false : true;
+            device.m_Coordinate     = QGeoCoordinate(e.attribute(m_XmlLatitude).toDouble(), e.attribute(m_XmlLongitude).toDouble());
 
             devicelist.append(device);
         }

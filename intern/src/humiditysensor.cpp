@@ -27,8 +27,9 @@ int CHumiditySensor::getHumidity()
 
     connect(reply , SIGNAL(readyRead()) , this , SLOT(waitForReply()));
 
+    reply->waitForReadyRead(-1);
 
-    QJsonObject json = reply;
+    QJsonObject json = QJsonDocument::fromBinaryData(reply->readAll()).object();
 
     if(json.contains("HumidPerCent")        &&  json["HumidPerCent"].isDouble())
         retval                              =   json["HumidPerCent"].toInt();

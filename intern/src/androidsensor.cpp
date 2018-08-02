@@ -30,6 +30,11 @@ CAndroidSensor::CAndroidSensor(QObject *parent)
     locationInfo_->startUpdates();
 }
 
+QGeoCoordinate CAndroidSensor::getGPSLocation()
+{
+    return m_Coordinates;
+}
+
 void CAndroidSensor::positionUpdated(const QGeoPositionInfo &info)
 {
     qDebug() << "Position updated:" << info;
@@ -37,21 +42,23 @@ void CAndroidSensor::positionUpdated(const QGeoPositionInfo &info)
 
 void CAndroidSensor::setGPSLocation(QGeoPositionInfo geoPositionInfo)
 {
-    QString text="Location=unknown";
+    m_Coordinates = geoPositionInfo.coordinate();
 
-    if (geoPositionInfo.isValid())
-    {
-        // get the current location coordinates
-        QGeoCoordinate geoCoordinate = geoPositionInfo.coordinate();
+//    QString text="Location=unknown";
 
-        // transform coordinates to lat/lon
-        qreal latitude = geoCoordinate.latitude();
-        qreal longitude = geoCoordinate.longitude();
+//    if (geoPositionInfo.isValid())
+//    {
+//        // get the current location coordinates
+//        QGeoCoordinate geoCoordinate = geoPositionInfo.coordinate();
 
-        text=QString("Latitude=%1\nLongitude=%2")
-                .arg(latitude,0,'g',8)
-                .arg(longitude,0,'g',8);
-    }
-    qDebug()<<text;
+//        // transform coordinates to lat/lon
+//        qreal latitude = geoCoordinate.latitude();
+//        qreal longitude = geoCoordinate.longitude();
+
+//        text=QString("Latitude=%1\nLongitude=%2")
+//                .arg(latitude,0,'g',8)
+//                .arg(longitude,0,'g',8);
+//    }
+//    qDebug()<<text;
 
 }
