@@ -51,16 +51,16 @@ CDeviceView::CDeviceView(CDeviceStructure::Device _device, QWidget *parent)
         m_pHomeComingOnOffSwitch = new CSwitchWidget(this);
         m_pHomeComingOnOffSwitch->setMinimumHeight(64);
         m_pHomeComingOnOffSwitch->setMinimumWidth(128);
-        m_pHomeComingSetButton = new CCustomButton("Set Destination", this);
+//        m_pHomeComingSetButton = new CCustomButton("Set Destination", this);
 
-        m_pMapView = new QQuickView();
-        m_pMapView->setSource(QUrl("qrc:/map.qml"));
-        m_pMapView->setResizeMode(QQuickView::SizeRootObjectToView);
-        m_pMapView->hide();
-        m_pMapView->close();
-        QWidget *MapContainer = QWidget::createWindowContainer(m_pMapView, this);
-        MapContainer->show();
-        MapContainer->resize(200, 200);
+//        m_pMapView = new QQuickView();
+//        m_pMapView->setSource(QUrl("qrc:/map.qml"));
+//        m_pMapView->setResizeMode(QQuickView::SizeRootObjectToView);
+//        m_pMapView->hide();
+//        m_pMapView->close();
+//        QWidget *MapContainer = QWidget::createWindowContainer(m_pMapView, this);
+//        MapContainer->show();
+//        MapContainer->resize(200, 200);
 
 //        m_pMapView = new CMapView(this);
 //        m_pMapView->lower();
@@ -88,11 +88,11 @@ CDeviceView::CDeviceView(CDeviceStructure::Device _device, QWidget *parent)
 
         //TODO: finish map (add set button & on/off switch)
 //        m_pMainLayout->addWidget(m_pMapWidget,              5,0, 1,2);
-        m_pMainLayout->addWidget(MapContainer,              5,0, 1,2);
+//        m_pMainLayout->addWidget(MapContainer,              5,0, 1,2);
 //        m_pMainLayout->addWidget(m_pMapView,                5,0, 1,2);
         m_pMainLayout->addWidget(m_pHomeComingOnOffLabel,   6,0);
-        m_pMainLayout->addWidget(m_pHomeComingOnOffSwitch,  6,1);
-        m_pMainLayout->addWidget(m_pHomeComingSetButton,    7,0, 1,2);
+        m_pMainLayout->addWidget(m_pHomeComingOnOffSwitch,  6,1, Qt::AlignRight);
+//        m_pMainLayout->addWidget(m_pHomeComingSetButton,    7,0, 1,2);
 
 
         connect(m_pSaturationSlider,    &QSlider::sliderReleased,   this, &CDeviceView::SettingsChanged);
@@ -165,6 +165,11 @@ CDeviceView::CDeviceView(CDeviceStructure::Device _device, QWidget *parent)
     UpdateDevice(_device);
 }
 
+CDeviceStructure::Device CDeviceView::GetDevice()
+{
+    return m_Device;
+}
+
 void CDeviceView::UpdateDevice(CDeviceStructure::Device _device)
 {
     m_Device = _device;
@@ -179,7 +184,8 @@ void CDeviceView::ReachedHome()
     }
     m_pHomecomingLamp = new CPhilips(nullptr, true, m_pBrightnessSlider->value(), m_pSaturationSlider->value(), m_Device.m_DeviceNumber, m_Device.m_IpAddress.toString());
     m_pSwitchWidget->setChecked(true);
-    m_Device.m_Active = false;
+    m_Device.m_HomecomingActive = false;
+    m_pHomeComingOnOffSwitch->setChecked(false);
 }
 
 void CDeviceView::SettingsChanged()
@@ -241,11 +247,8 @@ void CDeviceView::SettingsChanged()
         break;
     }
     }
-}
 
-void CDeviceView::UpdatePosition()
-{
-    //    QGeoLocation geoLocation = qmlObject->property("location").value<QGeoLocation>();
+    emit DeviceChanged();
 }
 
 void CDeviceView::OpenColorDialog()
@@ -276,12 +279,12 @@ void CDeviceView::SleepDevice()
 
 void CDeviceView::QuickWidgetStatusChanged(QQuickWidget::Status _status)
 {
-    qDebug() << "STATUS -> " << _status;
-    if (_status == QQuickWidget::Error) {
-        qDebug() << "ERROR -> " << m_pMapWidget->errors();
-    }
+//    qDebug() << "STATUS -> " << _status;
+//    if (_status == QQuickWidget::Error) {
+//        qDebug() << "ERROR -> " << m_pMapWidget->errors();
+//    }
 
-    if (_status == QQuickWidget::Ready) {
-        qDebug() << "IM READY TO LOAD";
-    }
+//    if (_status == QQuickWidget::Ready) {
+//        qDebug() << "IM READY TO LOAD";
+//    }
 }

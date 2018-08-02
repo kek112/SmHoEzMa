@@ -24,6 +24,7 @@ signals:
 
 public slots:
     void SleepDevices();
+    void SetHomeCoordinate(QGeoCoordinate _coordinate);
 
 private slots:
     void OpenAddDevice();
@@ -31,6 +32,7 @@ private slots:
     void CancelAddDevice();
     void AddDevice(CDeviceStructure::Device _toAdd);
     void ReachedHome(int _device);
+    void DeviceUpdated();
 
 private:
     void LoadDeviceList();

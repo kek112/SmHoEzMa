@@ -5,6 +5,7 @@
 #include "appheader.h"
 #include "devicelistview.h"
 #include "menubar.h"
+#include "settings.h"
 
 #include <QApplication>
 #include <QDebug>
@@ -37,6 +38,7 @@ private slots:
     void openMenu();
 
     void ShowDevices();
+    void ShowSettings();
     void ShowAbout();
 
     void SleepModus();
@@ -51,6 +53,7 @@ private:
 
     CDeviceListView*    m_pDeviceView;
     CAboutView*         m_pAboutView;
+    CSettings*          m_pSettingsView;
 
     QVBoxLayout*        m_pMainLayout;
 

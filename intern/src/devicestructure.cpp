@@ -64,7 +64,7 @@ bool CDeviceStructure::save()
         xmldevice.setAttribute(m_XmlMacAddressString,   tempdevice.m_MacAddress);
         xmldevice.setAttribute(m_XmlDeviceNumber,       tempdevice.m_DeviceNumber);
         xmldevice.setAttribute(m_XmlDeviceTypeString,   tempdevice.m_DeviceType);
-        xmldevice.setAttribute(m_XmlActive,             tempdevice.m_Active ? 1 : 0);
+        xmldevice.setAttribute(m_XmlActive,             tempdevice.m_HomecomingActive ? 1 : 0);
         xmldevice.setAttribute(m_XmlLatitude,           QString::number(tempdevice.m_Coordinate.latitude()));
         xmldevice.setAttribute(m_XmlLongitude,          QString::number(tempdevice.m_Coordinate.longitude()));
 
@@ -158,7 +158,7 @@ bool CDeviceStructure::addDevices(QString           _Name,
         device.m_MacAddress     = _MacAddress;
         device.m_DeviceType     = _DeviceType;
         device.m_DeviceNumber   = _DeviceNumber;
-        device.m_Active         = _Active;
+        device.m_HomecomingActive         = _Active;
         device.m_Coordinate     = _Coordinate;
 
         m_Devices.append(device);
@@ -170,7 +170,7 @@ bool CDeviceStructure::addDevices(QString           _Name,
         device.m_MacAddress     = _MacAddress;
         device.m_DeviceType     = _DeviceType;
         device.m_DeviceNumber   = _DeviceNumber;
-        device.m_Active         = _Active;
+        device.m_HomecomingActive         = _Active;
         device.m_Coordinate     = _Coordinate;
 
         m_Devices.append(device);
@@ -178,6 +178,16 @@ bool CDeviceStructure::addDevices(QString           _Name,
     }
 
 
+}
+
+bool CDeviceStructure::addDevices(CDeviceStructure::Device _device)
+{
+    m_Devices.append(_device);
+}
+
+void CDeviceStructure::ClearDevices()
+{
+    m_Devices.clear();
 }
 
 ///
@@ -256,7 +266,7 @@ QList<CDeviceStructure::Device> CDeviceStructure::retrieveElements(QDomElement r
             device.m_MacAddress     = e.attribute(m_XmlMacAddressString);
             device.m_DeviceType     = static_cast<EDevices>(e.attribute(m_XmlDeviceTypeString).toInt());
             device.m_DeviceNumber   = e.attribute(m_XmlDeviceNumber).toInt();
-            device.m_Active         = e.attribute(m_XmlActive) == 0 ? false : true;
+            device.m_HomecomingActive         = e.attribute(m_XmlActive) == 0 ? false : true;
             device.m_Coordinate     = QGeoCoordinate(e.attribute(m_XmlLatitude).toDouble(), e.attribute(m_XmlLongitude).toDouble());
 
             devicelist.append(device);

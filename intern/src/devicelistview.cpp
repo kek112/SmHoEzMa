@@ -32,14 +32,14 @@ CDeviceListView::CDeviceListView(QWidget *parent) : QWidget(parent)
     m_pMainStackLayout->addWidget(deviceListWidget);
     m_pMainStackLayout->addWidget(m_pAddDeviceView);
 
-//    m_pMapThread = new CMapThread(m_pDevices);
-//    m_pMapThread->moveToThread(&m_WorkerThread);
-//    connect(&m_WorkerThread,    &QThread::finished,             m_pMapThread,   &QObject::deleteLater);
-//    connect(this,               &CDeviceListView::startThread,  m_pMapThread,   &CMapThread::checkGPS);
-//    connect(m_pMapThread,       &CMapThread::reachedHome,       this,           &CDeviceListView::ReachedHome);
+    m_pMapThread = new CMapThread(*m_pDevices);
+    m_pMapThread->moveToThread(&m_WorkerThread);
+    connect(&m_WorkerThread,    &QThread::finished,             m_pMapThread,   &QObject::deleteLater);
+    connect(this,               &CDeviceListView::startThread,  m_pMapThread,   &CMapThread::checkGPS);
+    connect(m_pMapThread,       &CMapThread::reachedHome,       this,           &CDeviceListView::ReachedHome);
 
-//    m_WorkerThread.start();
-//    emit startThread();
+    m_WorkerThread.start();
+    emit startThread();
 
     setLayout(m_pMainStackLayout);
 
@@ -59,6 +59,11 @@ void CDeviceListView::SleepDevices()
     }
 }
 
+void CDeviceListView::SetHomeCoordinate(QGeoCoordinate _coordinate)
+{
+    m_pMapThread->SetHome(_coordinate);
+}
+
 void CDeviceListView::OpenAddDevice()
 {
     m_pMainStackLayout->setCurrentIndex(1);
@@ -69,6 +74,10 @@ void CDeviceListView::RemoveDevice()
     int currentDevice = m_pDeviceToolBox->currentIndex();
     m_pDevices->deleteDevice(currentDevice);
     m_pDeviceToolBox->removeItem(currentDevice);
+
+    m_pMapThread->StopThread();
+    m_pMapThread->UpdateDeviceStructure(*m_pDevices);
+    emit startThread();
 }
 
 void CDeviceListView::CancelAddDevice()
@@ -81,12 +90,31 @@ void CDeviceListView::AddDevice(CDeviceStructure::Device _toAdd)
     m_pDevices->addDevices(_toAdd.m_Name, _toAdd.m_IpAddress, _toAdd.m_MacAddress, _toAdd.m_DeviceType, _toAdd.m_DeviceNumber, false, _toAdd.m_Coordinate);
     m_pMainStackLayout->setCurrentIndex(0);
     m_pDeviceToolBox->addItem(new CDeviceView(_toAdd, this), _toAdd.m_Name);
+
+
+    m_pMapThread->StopThread();
+    m_pMapThread->UpdateDeviceStructure(*m_pDevices);
+    emit startThread();
 }
 
 void CDeviceListView::ReachedHome(int _device)
 {
     CDeviceView* deviceView = static_cast<CDeviceView*>(m_pDeviceToolBox->widget(_device));
     deviceView->ReachedHome();
+}
+
+void CDeviceListView::DeviceUpdated()
+{
+    m_pDevices->ClearDevices();
+    for(int i = 0; i < m_pDeviceToolBox->count(); i++)
+    {
+        CDeviceView* deviceView = static_cast<CDeviceView*>(m_pDeviceToolBox->widget(i));
+        m_pDevices->addDevices(deviceView->GetDevice());
+    }
+
+    m_pMapThread->StopThread();
+    m_pMapThread->UpdateDeviceStructure(*m_pDevices);
+    emit startThread();
 }
 
 

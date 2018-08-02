@@ -31,7 +31,7 @@ public:
       QString           m_MacAddress;
       EDevices          m_DeviceType;
       int               m_DeviceNumber;
-      bool              m_Active;
+      bool              m_HomecomingActive;
       QGeoCoordinate    m_Coordinate;
     };
 
@@ -50,6 +50,8 @@ public:
                     int             _DeviceNumber,
                     bool            _Active,
                     QGeoCoordinate  _Coordinate);
+    bool addDevices(Device _device);
+    void ClearDevices();
 
 
     QList<Device> returnDevices();

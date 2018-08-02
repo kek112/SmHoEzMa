@@ -10,11 +10,13 @@ CMenuBar::CMenuBar(QWidget *parent) : QWidget(parent)
 
     QButtonGroup* menuButtonGroup = new QButtonGroup(this);
 
-    m_pDevicesButton = new CCustomButton("Devices", this);
-    m_pAboutButton   = new CCustomButton("About", this);
-    m_pSleepButton   = new CCustomButton("Sleep", this);
+    m_pDevicesButton = new CCustomButton("Devices",     this);
+    m_pAboutButton   = new CCustomButton("About",       this);
+    m_pSleepButton   = new CCustomButton("Sleep",       this);
+    m_pSettingsButton= new CCustomButton("Settings",    this);
 
     menuButtonGroup->addButton(m_pDevicesButton);
+    menuButtonGroup->addButton(m_pSettingsButton);
     menuButtonGroup->addButton(m_pAboutButton);
     menuButtonGroup->addButton(m_pSleepButton);
 
@@ -26,6 +28,7 @@ CMenuBar::CMenuBar(QWidget *parent) : QWidget(parent)
 
     m_pMainLayout->addWidget(m_pImageLabel);
     m_pMainLayout->addWidget(m_pDevicesButton);
+    m_pMainLayout->addWidget(m_pSettingsButton);
     m_pMainLayout->addWidget(m_pAboutButton);
     m_pMainLayout->addWidget(m_pSleepButton);
     m_pMainLayout->addStretch(1);
@@ -50,6 +53,10 @@ void CMenuBar::priavteButtonPressed(QAbstractButton* _pressedButton)
     if(_pressedButton == m_pSleepButton)
     {
         emit SleepButtonPressed();
+    }
+    if(_pressedButton == m_pSettingsButton)
+    {
+        emit SettingsButtonPressed();
     }
 }
 

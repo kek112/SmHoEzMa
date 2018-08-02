@@ -18,6 +18,7 @@ public:
 
 signals:
     void DeviceButtonPressed();
+    void SettingsButtonPressed();
     void AboutButtonPressed();
     void SleepButtonPressed();
 
@@ -34,6 +35,7 @@ private:
     CCustomButton*  m_pDevicesButton;
     CCustomButton*  m_pAboutButton;
     CCustomButton*  m_pSleepButton;
+    CCustomButton*  m_pSettingsButton;
 
     QVBoxLayout*    m_pMainLayout;
 };

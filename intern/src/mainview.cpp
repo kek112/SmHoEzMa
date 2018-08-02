@@ -14,9 +14,12 @@ CMainView::CMainView(QWidget *parent) : QWidget(parent)
 
     m_pDeviceView = new CDeviceListView(this);
     m_pAboutView = new CAboutView(this);
+    m_pSettingsView = new CSettings(this);
 
     m_pMainWidgetStack->addWidget(m_pDeviceView);
+    m_pMainWidgetStack->addWidget(m_pSettingsView);
     m_pMainWidgetStack->addWidget(m_pAboutView);
+
 
     m_pMainWidgetStack->setCurrentIndex(0);
 
@@ -41,14 +44,17 @@ CMainView::CMainView(QWidget *parent) : QWidget(parent)
     connect(m_pAppHeader, SIGNAL(MenuButtonPressed()), this, SLOT(triggerMenu()));
 
     connect(m_pMenuBar, SIGNAL(AboutButtonPressed()), this, SLOT(ShowAbout()));
+    connect(m_pMenuBar, SIGNAL(SettingsButtonPressed()), this, SLOT(ShowSettings()));
     connect(m_pMenuBar, SIGNAL(DeviceButtonPressed()), this, SLOT(ShowDevices()));
     connect(m_pMenuBar, SIGNAL(SleepButtonPressed()), this, SLOT(SleepModus()));
+
+    connect(m_pSettingsView, SIGNAL(SetHomeLocation(QGeoCoordinate)), m_pDeviceView, SLOT(SetHomeCoordinate(QGeoCoordinate)));
 }
 
 void CMainView::resizeEvent(QResizeEvent *_event)
 {
     auto tempWindow = qApp->activeWindow();
-    if(tempWindow != 0)
+    if(tempWindow != nullptr)
     {
         QSize tempSize = qApp->activeWindow()->size();
         tempSize.setWidth(tempSize.width() * 0.7);
@@ -99,6 +105,12 @@ void CMainView::openMenu()
 void CMainView::ShowDevices()
 {
     m_pMainWidgetStack->setCurrentWidget(m_pDeviceView);
+    closeMenu(true);
+}
+
+void CMainView::ShowSettings()
+{
+    m_pMainWidgetStack->setCurrentWidget(m_pSettingsView);
     closeMenu(true);
 }
 

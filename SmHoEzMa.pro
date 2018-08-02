@@ -71,7 +71,8 @@ SOURCES += \
     intern/src/switchwidget.cpp \
     intern/src/mapthread.cpp \
     intern/src/customcolordialog.cpp \
-    intern/src/mapview.cpp
+    intern/src/mapview.cpp \
+    intern/src/settings.cpp
 
 HEADERS += \
         intern/src/mainwindow.h \
@@ -96,7 +97,8 @@ HEADERS += \
     intern/src/switchwidget.h \
     intern/src/mapthread.h \
     intern/src/customcolordialog.h \
-    intern/src/mapview.h
+    intern/src/mapview.h \
+    intern/src/settings.h
 
 include(Project_Compile_Settings_Sahm.pri)
 

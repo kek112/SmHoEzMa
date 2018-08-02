@@ -15,7 +15,6 @@ Rectangle {
     height: 200
     visible: true
 
-
     Plugin {
         id: mapPlugin
         name: "osm"
@@ -43,8 +42,6 @@ Rectangle {
             }
         }
 
-        gesture.enabled: false
-
         PositionSource {
             id: positionSource
             active: true
@@ -55,16 +52,14 @@ Rectangle {
             }
         }
 
-        //Set extra area for gestures (manuel machen)
-        function setGestureSize() {
-            console.log("Height: " ,map.gesture.height);
-            console.log("Width: " ,map.gesture.width);
-            map.gesture.height = 200;
-            map.gesture.width = 200;
-            console.log("Height: " ,map.gesture.height);
-            console.log("Width: " ,map.gesture.width);
-        }
 
+    }
+
+    function setPostion() {
+        var currentPosition = positionSource.position.coordinate;
+        map.center = currentPosition;
+        marker.coordinate = currentPosition;
+        return currentPosition;
     }
 }
 

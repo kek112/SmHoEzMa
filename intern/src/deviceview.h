@@ -27,16 +27,16 @@ class CDeviceView : public QWidget
     Q_OBJECT
 public:
     explicit CDeviceView(CDeviceStructure::Device _device, QWidget *parent = nullptr);
+    CDeviceStructure::Device GetDevice();
 
 signals:
-    void DeviceChanged(CDeviceStructure::Device _device);
+    void DeviceChanged();
     void DebugMap();
 
 public slots:
     void UpdateDevice(CDeviceStructure::Device _device);
     void ReachedHome();
     void SettingsChanged();
-    void UpdatePosition();
     void OpenColorDialog();
     void SleepDevice();
 
@@ -64,9 +64,8 @@ private:
     QSlider*        m_pHueSlider;
     CCustomButton*  m_pOpenColorDialogButton;
 
-    QQmlEngine*     m_pMapEngine;
-    QQuickWidget*   m_pMapWidget;
-    QQuickView*     m_pMapView;
+//    QQuickWidget*   m_pMapWidget;
+//    QQuickView*     m_pMapView;
 //    CMapView*       m_pMapView;
 
 
