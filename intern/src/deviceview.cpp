@@ -49,6 +49,8 @@ CDeviceView::CDeviceView(CDeviceStructure::Device _device, QWidget *parent)
 
         m_pHomeComingOnOffLabel = new QLabel("Homecoming", this);
         m_pHomeComingOnOffSwitch = new CSwitchWidget(this);
+        m_pHomeComingOnOffSwitch->setMinimumHeight(64);
+        m_pHomeComingOnOffSwitch->setMinimumWidth(128);
         m_pHomeComingSetButton = new CCustomButton("Set Destination", this);
 
         m_pMapView = new QQuickView();
