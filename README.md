@@ -58,23 +58,21 @@ Als Empfehlung für den IIS Express ist es zu raten das eine Erweiterung install
 
 Der Startbildschirm von SmHoEzMa ist die Liste der eingespeicherten Geräte. Sollte man die App noch nicht gestartet haben so kann man anfangen und die Geräte über das Plus hinzuzufügen. 
 
-#####HIER BILD VON STARTSEITE ohne Gerät EINFÜGEN
-![SmHoEzMa-Startmenü](/images/.PNG)
+![SmHoEzMa-Startmenü](/images/smo1.jpg)
 
 Möchte man ein neues Gerät hinzufügen so sollte man dessen IP Adresse kennen. Diese trägt man mit einem Namen der eigenen Wahl ein und lässt es hinzufügen. Dann mit einem Dropdown wird die Geräteklasse ausgewählt. Diese ist wichtig um zu wissen wie das Geräte später angesteuert werden muss. 
 
-#####HIER BILD VON GERÄT HINZUFÜGEN EINFÜGEN
-![SmHoEzMa-Gerät hinzufügen](/images/.PNG)
+![SmHoEzMa-Gerät hinzufügen](/images/smo2.jpg)
 
 Nachdem das entsprechende Gerät in der Liste aufgenommen wurde können verschiedene Funktionen ausgeführt werden. Je nach Gerätemodel werden andere Möglichkeiten der Ansteuerung dargestellt. So bietet ein Sensor nur die Abfrage des Wertes und eine Philips Hue bietet die Einstellung der Helligkeit, der Sättigung und des Farbwertes. 
 
-#####HIER BILD VON STARTSEITE mit philips hue EINFÜGEN
-![SmHoEzMa-Startmenü2](/images/.PNG)
+![SmHoEzMa-Startmenü2](/images/smo3.jpg)
 
 Werden nun die Einstellung eines hinzugefügten Gerätes ausgewählt so kommt man in ein Menü welches die Möglichkeit bietet eine Homecoming Funktion einzustellen. Diese ermöglicht es die Geräte spezifisch anzusteuern sobald sich das Telefon in deren Nähe befindet. 
 
-#####HIER BILD VON GERÄTe EInstellungen EINFÜGEN
-![SmHoEzMa-Geräte Einstellung](/images/.PNG)
+![SmHoEzMa-Geräte Einstellung](/images/smo4.jpg)
+
+Möchte man die GPS Position für die Homecoming Funktion setzen, so kann dies in diesen Einstellungen vorgenommen werden. 
 
 Wählt man das Hamburgermenü im Startbildschirm aus so werden verschiedene Funktionen sichtbar wie den Sleepmode oder die Einstellung für die App. 
 Der Sleepmode ermöglicht es alle Geräte anzusteuern und diese auszuschalten, sofern diese damit ansprechbar sind. 
