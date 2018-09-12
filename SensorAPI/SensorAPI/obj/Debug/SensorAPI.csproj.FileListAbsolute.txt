@@ -67,10 +67,7 @@ C:\Users\karl\source\repos\SensorAPI\SensorAPI\obj\Debug\SensorAPI.csproj.CoreCo
 C:\Users\karl\source\repos\SensorAPI\SensorAPI\obj\Debug\SensorAPI.csproj.CopyComplete
 C:\Users\karl\source\repos\SensorAPI\SensorAPI\obj\Debug\SensorAPI.dll
 C:\Users\karl\source\repos\SensorAPI\SensorAPI\obj\Debug\SensorAPI.pdb
-C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\obj\Debug\SensorAPI.csprojAssemblyReference.cache
 C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\obj\Debug\SensorAPI.csproj.CoreCompileInputs.cache
-C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\obj\Debug\SensorAPI.dll
-C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\obj\Debug\SensorAPI.pdb
 C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\bin\SensorAPI.dll.config
 C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\bin\SensorAPI.dll
 C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\bin\SensorAPI.pdb
@@ -135,4 +132,7 @@ C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\bin\Microsoft.CodeDo
 C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\bin\de\System.Net.Http.Formatting.resources.dll
 C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\bin\de\System.Web.Http.resources.dll
 C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\bin\de\System.Web.Http.WebHost.resources.dll
+C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\obj\Debug\SensorAPI.csprojAssemblyReference.cache
 C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\obj\Debug\SensorAPI.csproj.CopyComplete
+C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\obj\Debug\SensorAPI.dll
+C:\Users\karl\Documents\GitHub\SmHoEzMa\SensorAPI\SensorAPI\obj\Debug\SensorAPI.pdb

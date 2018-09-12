@@ -10,6 +10,8 @@ namespace SensorAPI.Controllers
 {
     public class HumidityController : ApiController
     {
+
+
         // GET: api/Humidity
         public IEnumerable<string> Get()
         {
