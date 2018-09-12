@@ -6,12 +6,16 @@ using System.Net.Http;
 using System.Web.Http;
 using SensorAPI.Models;
 using Newtonsoft.Json;
-
+using System.IO;
 
 namespace SensorAPI.Controllers
 {
     public class NodeMCUController : ApiController
     {
+        string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName+"\\nodes.json";
+
+        string FilePath = @"C:\nodes.json";
+
         // GET: api/NodeMCU
         public IEnumerable<string> Get()
         {
@@ -29,11 +33,33 @@ namespace SensorAPI.Controllers
         {
             try
             {
-                string json = JsonConvert.SerializeObject(node);
-                
-
-
-
+                // read json into object
+                // file exisats
+                if (!File.Exists(path))
+                {
+                    File.WriteAllText(path, String.Empty);
+                }
+                //file has content
+              
+                List<NodeMCU> nodes = JsonConvert.DeserializeObject<List<NodeMCU>>(File.ReadAllText(path));
+                //check if Json is already in List
+                if (nodes != null)
+                {
+                    if (nodes.Contains(node))
+                    {
+                        nodes.First(n => n.IP == node.IP).Value = node.Value;
+                    }
+                    else // add it if not
+                    {
+                        nodes.Add(node);
+                    }
+                }
+                else
+                {
+                    nodes = new List<NodeMCU> { node };
+                }
+                // write file back
+                File.WriteAllText(path, JsonConvert.SerializeObject(nodes));
 
 
                 var     message = Request.CreateResponse(HttpStatusCode.Created, node);

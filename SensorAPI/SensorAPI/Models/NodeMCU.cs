@@ -9,8 +9,8 @@ namespace SensorAPI.Models
     {
         public int Value { get; set; }
         public String IP { get; set; }
-
         public String SensorName { get; set; }
+        public int ID { get; set; }
     }
    
 }
