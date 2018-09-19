@@ -24,7 +24,7 @@ const char *host = "http://dataservice.accuweather.com";   //https://circuits4yo
 void setup() 
 {
   delay(1000);
-  Serial.begin(115200);
+  Serial.begin(9600);
   WiFi.mode(WIFI_OFF);        //Prevents reconnection issue (taking too long to connect)
   delay(1000);
   WiFi.mode(WIFI_STA);        //This line hides the viewing of ESP as wifi hotspot
@@ -78,3 +78,38 @@ void loop()
   delay(5000);  //GET Data at every 5 seconds
 }
 //=======================================================================
+
+//=======================================================================
+//READ ANALOG SENORS
+//=======================================================================
+
+float readPhoto()
+{
+  digitalWrite(D1, HIGH);
+  digitalWrite(D2, HIGH);
+  digitalWrite(D5, HIGH);
+    
+  int sensorValue = analogRead(A0);
+  return sensorValue;
+  
+}
+
+int readThermo() 
+{
+  digitalWrite(D1, HIGH);
+  digitalWrite(D2, LOW);
+  digitalWrite(D5, HIGH);
+  
+  float reading;
+ 
+  reading = analogRead(THERMISTORPIN);
+ 
+  Serial.print("Analog reading "); 
+  Serial.println(reading);
+ 
+  // convert the value to resistance
+  reading = (1023 / reading)  - 1;     // (1023/ADC - 1) 
+  reading = SERIESRESISTOR / reading;  // 10K / (1023/ADC - 1)
+  Serial.print("Thermistor resistance "); 
+  Serial.println(reading);
+}

@@ -39,21 +39,23 @@ namespace SensorAPI.Controllers
                 {
                     File.WriteAllText(path, String.Empty);
                 }
-                //file has content
-              
+                //convert json file to list
                 List<NodeMCU> nodes = JsonConvert.DeserializeObject<List<NodeMCU>>(File.ReadAllText(path));
+
                 //check if Json is already in List
                 if (nodes != null)
                 {
                     if (nodes.Contains(node))
                     {
-                        nodes.First(n => n.IP == node.IP).Value = node.Value;
+                        // search for same IP in list (maybe change later)
+                        nodes.First(n => n == node).Value = node.Value;
                     }
                     else // add it if not
                     {
                         nodes.Add(node);
                     }
                 }
+                // if list is null create new object and fill it 
                 else
                 {
                     nodes = new List<NodeMCU> { node };
