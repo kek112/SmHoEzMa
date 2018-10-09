@@ -33,7 +33,7 @@ namespace SensorAPI.Controllers
         {
             try
             {
-                // read json into object
+                // read json into object 
                 // file exisats
                 if (!File.Exists(path))
                 {
